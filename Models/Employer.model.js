@@ -14,6 +14,9 @@ const employerSchema = new mongoose.Schema(
     companyLogo: { type: String },
     jobPosts: [{ type: mongoose.Schema.Types.ObjectId, ref: "Job" }],
     role: { type: String, enum: ["employer", "admin"], default: "employer" },
+    resetToken: String,
+    resetTokenExpires: Date,
+    
   },
   { timestamps: true }
 );

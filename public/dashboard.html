@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Dashboard - Job Portal</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .sidebar {
+      background-color: #00BCD4;
+      color: #fff;
+      height: 100vh;
+    }
+    .sidebar a {
+      color: #adb5bd;
+      text-decoration: none;
+      display: block;
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+    .sidebar a:hover {
+      background-color: #5fbae4;
+      color: #fff;
+    }
+    .card {
+      border: none;
+      border-radius: 15px;
+    }
+    .profile-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #adb5bd;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar Navigation -->
+      <nav class="col-md-2 sidebar d-flex flex-column p-3">
+        <h4 class="text-white">Job Portal</h4>
+        <hr class="text-white">
+        <a id="dashboardLink">Dashboard</a>
+        <a id="profileLink">Profile</a>
+        <a id="activityLink"></a>
+        <a id="messagesLink">Messages</a>
+        <a id="settingsLink">Settings</a>
+        <a id="logoutLink">Logout</a>
+      </nav>
+
+      <!-- Main Dashboard Content -->
+      <main class="col-md-10 p-4">
+        <div id="contentArea"></div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Dashboard Template -->
+  <template id="dashboardTemplate">
+    <div id="dashboardContent">
+      <div class="mb-4">
+        <h2 id="greeting">Welcome, User!</h2>
+        <p id="roleDisplay" class="lead"></p>
+      </div>
+      <div class="card mb-4 shadow-sm p-4">
+        <div class="row align-items-center">
+          <div class="col-md-2 text-center">
+            <img src="https://via.placeholder.com/80" alt="Profile Picture" class="profile-img">
+          </div>
+          <div class="col-md-10">
+            <h4 id="userName">Abhiteh Giri</h4>
+            <p id="userEmail">abhi@developer.com</p>
+            <p>
+              <small>
+                <strong>Role:</strong> <span id="userRole">Job Seeker</span> &nbsp;|&nbsp;
+                <strong>Joined:</strong> <span id="userJoined">Jan 2025</span> &nbsp;|&nbsp;
+                <strong>Last Login:</strong> <span id="userLastLogin">Apr 10, 2025</span>
+              </small>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Activity Summary -->
+      <div id="summarySection" class="row g-4">
+        <!-- Job Seeker Summary -->
+        <div id="jobSeekerSummary" class="col-md-4 d-none">
+          <div class="card shadow-sm p-3 text-center bg-info text-white">
+            <h5>Jobs Applied</h5>
+            <h3 id="jobsApplied">0</h3>
+          </div>
+        </div>
+        <div id="savedJobs" class="col-md-4 d-none">
+          <div class="card shadow-sm p-3 text-center bg-secondary text-white">
+            <h5>Saved Jobs</h5>
+            <h3 id="jobsSaved">0</h3>
+          </div>
+        </div>
+        <div id="seekerMessages" class="col-md-4 d-none">
+          <div class="card shadow-sm p-3 text-center bg-warning text-dark">
+            <h5>Messages</h5>
+            <h3 id="seekerMsgCount">0</h3>
+          </div>
+        </div>
+
+        <!-- Recruiter Summary -->
+        <div id="recruiterSummary" class="col-md-4 d-none">
+          <div class="card shadow-sm p-3 text-center bg-primary text-white">
+            <h5>Jobs Posted</h5>
+            <h3 id="jobsPosted">0</h3>
+          </div>
+        </div>
+        <div id="applicantsCount" class="col-md-4 d-none">
+          <div class="card shadow-sm p-3 text-center bg-success text-white">
+            <h5>Total Applicants</h5>
+            <h3 id="totalApplicants">0</h3>
+          </div>
+        </div>
+        <div id="recruiterMessages" class="col-md-4 d-none">
+          <div class="card shadow-sm p-3 text-center bg-danger text-white">
+            <h5>Messages</h5>
+            <h3 id="recruiterMsgCount">0</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Activities -->
+      <div class="mt-5">
+        <h4>Recent Activities</h4>
+        <table class="table table-hover mt-3">
+          <thead class="table-light">
+            <tr>
+              <th>#</th>
+              <th>Activity Description</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody id="recentActivities"></tbody>
+        </table>
+      </div>
+    </div>
+  </template>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Dashboard Script -->
+  <script>
+    document.getElementById("dashboardLink").addEventListener("click", () => {
+      loadDashboard();
+    });
+    
+    async function fetchDashboardData() {
+      const token = localStorage.getItem("token");
+      const res = await fetch("http://localhost:3000/employer/dashboard", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const d=await res.json();
+      console.log(d)
+      return d;
+    }
+    
+    function renderActivities(activities) {
+      const tbody = document.getElementById("recentActivities");
+      tbody.innerHTML = "";
+      if (activities.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="3" class="text-center">No recent activity.</td></tr>`;
+        return;
+      }
+      activities.forEach((act, idx) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `<td>${idx + 1}</td><td>${act.description}</td><td>${new Date(act.date).toDateString()}</td>`;
+        tbody.appendChild(row);
+      });
+    }
+    
+    function renderJobsOrApplications(jobs, isJobseeker) {
+      const contentArea = document.getElementById("contentArea");
+      contentArea.innerHTML = `<h3 class="mb-4">${isJobseeker ? 'Your Applications' : 'Your Job Posts'}</h3>`;
+    
+      const row = document.createElement("div");
+      row.classList.add("row");
+    
+      if (!jobs || jobs.length === 0) {
+        row.innerHTML = `<p class="text-muted">${isJobseeker ? 'You haven\'t applied to any jobs yet.' : 'You haven\'t posted any jobs yet.'}</p>`;
+      } else {
+        jobs.forEach((job) => {
+          const col = document.createElement("div");
+          col.classList.add("col-md-6", "mb-4");
+    
+          const card = document.createElement("div");
+          card.classList.add("card", "shadow-sm", "p-3");
+    
+          card.innerHTML = `
+            <img src="${job.logo}" alt="Company Logo" class="mb-3" style="height:50px">
+            <h5 class="card-title">${job.title}</h5>
+            <p><strong>Company:</strong> ${job.company}</p>
+            <p><strong>Location:</strong> ${job.location}</p>
+            <p><strong>Salary:</strong> ₹${job.salary}</p>
+            <p><strong>Tags:</strong> ${job.tags?.join(', ')}</p>
+            <p><strong>Apply Before:</strong> ${new Date(job.closingDate).toDateString()}</p>
+            <p class="text-muted">${job.description}</p>
+          `;
+    
+          col.appendChild(card);
+          row.appendChild(col);
+        });
+      }
+    
+      contentArea.appendChild(row);
+    }
+    
+    function renderProfileForm(profile) {
+      const contentArea = document.getElementById("contentArea");
+      contentArea.innerHTML = `
+        <h3 class="mb-4">Edit Your Profile</h3>
+        <form id="profileForm" class="card p-4 shadow-sm">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Name</label>
+              <input type="text" class="form-control" name="name" value="${profile.name}" />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-control" name="email" value="${profile.email}" />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Role</label>
+              <input type="text" class="form-control" name="role" value="${profile.role}" />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Joined On</label>
+              <input type="text" class="form-control" value="${new Date(profile.joined)}" disabled />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Last Login</label>
+              <input type="text" class="form-control" value="${new Date(profile.lastLogin)}" disabled />
+            </div>
+          </div>
+          <div class="mt-4">
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </div>
+        </form>
+      `;
+    }
+    
+   
+    async function loadDashboard() {
+      const contentArea = document.getElementById("contentArea");
+      contentArea.innerHTML = "";
+      const template = document.getElementById("dashboardTemplate");
+      contentArea.appendChild(template.content.cloneNode(true));
+    
+      try {
+        const profile = await fetchDashboardData();
+    
+        // Update Basic Info
+        document.getElementById("userName").textContent = profile.name;
+        document.getElementById("userEmail").textContent = profile.email;
+        document.getElementById("userRole").textContent = profile.role;
+        document.getElementById("userJoined").textContent = new Date(profile.joined).toDateString();
+        document.getElementById("userLastLogin").textContent = new Date(profile.lastLogin).toDateString();
+        document.getElementById("greeting").textContent = `Welcome, ${profile.name}!`;
+        document.getElementById("roleDisplay").textContent = `Your role: ${profile.role}`;
+    
+        // Hide all summary cards first
+        ['jobSeekerSummary', 'savedJobs', 'seekerMessages', 'recruiterSummary', 'applicantsCount', 'recruiterMessages'].forEach(id =>
+          document.getElementById(id).classList.add('d-none')
+        );
+    
+        document.getElementById("activityLink").addEventListener("click", () => { renderJobsOrApplications(profile.appliedJobs, true); });
+        document.getElementById("profileLink").addEventListener("click", () => { renderProfileForm(profile); });
+  
+        // Show and populate summary cards
+        if (profile.role === "jobseeker") {
+          document.getElementById("jobSeekerSummary").classList.remove("d-none");
+          document.getElementById("savedJobs").classList.remove("d-none");
+          document.getElementById("seekerMessages").classList.remove("d-none");
+          document.getElementById("jobsApplied").textContent = profile.jobsApplied || 0;
+          document.getElementById("jobsSaved").textContent = profile.savedJobs || 0;
+          document.getElementById("seekerMsgCount").textContent = profile.seekerMsgCount || 0;
+          document.getElementById("activityLink").textContent = "My Applications";
+    
+          // Click handler to show applications
+         
+        } else {
+          document.getElementById("recruiterSummary").classList.remove("d-none");
+          document.getElementById("applicantsCount").classList.remove("d-none");
+          document.getElementById("recruiterMessages").classList.remove("d-none");
+          document.getElementById("jobsPosted").textContent = profile.jobsPosted || 0;
+          document.getElementById("totalApplicants").textContent = profile.totalApplicants || 0;
+          document.getElementById("recruiterMsgCount").textContent = profile.message || 0;
+          document.getElementById("activityLink").textContent = "My Job Posts";
+    
+          // Click handler to show job posts
+          document.getElementById("activityLink").addEventListener("click", () => { renderJobsOrApplications(profile.jobsPosted, false); });
+        }
+        renderActivities(profile.activities || []);
+      } catch (err) {
+        console.error("Failed to load dashboard:", err);
+        contentArea.innerHTML = `<p class="text-danger">Unable to load dashboard. Please try again later.</p>`;
+      }
+    }
+    
+    // Initial load
+    loadDashboard();
+    
+  </script>
+</body>
+</html>

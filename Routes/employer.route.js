@@ -1,9 +1,9 @@
 const express = require('express');
-const { getEmployerJobs, getApplicants } = require('../controllers/employerController');
-const { employerProtect } = require('../Middlewares/authMiddleware');
+const {  getdashboard } = require('../Controllers/EmployerController');
+const { employerProtect,protect } = require('../Middlewares/authMiddleware');
 const router = express.Router();
 
-router.get('/my-jobs', employerProtect, getEmployerJobs);
-router.get('/applicants/:jobId', employerProtect, getApplicants);
-
+// router.get('/my-jobs', employerProtect, getEmployerJobs);
+// router.get('/applicants/:jobId', employerProtect, getApplicants);
+router.get('/dashboard',protect,getdashboard)
 module.exports = router;
