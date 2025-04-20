@@ -1,0 +1,106 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="./IMAGES/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./IMAGES/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./IMAGES/favicon-16x16.png">
+    <link rel="manifest" href="./IMAGES/site.webmanifest">
+    <title>Packages</title>
+    <link rel="stylesheet" href="./packages.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+    integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $("#header").load("/header/pages.html");         
+            $("#footer").load("/footer/footer.html");
+    
+        });
+    </script>
+</head>
+  
+<body>
+    <header id="header"></header>
+
+    <section id="searchbar">
+        <input class="input" id="search" name="text" placeholder="Search..." type="search">
+    </section>
+
+    <div id="Middle">
+       
+        <div id="left">
+
+            <div id="sortingdata">
+                <p class="sort-by" >Sort By</p>
+                <select name="sorting" id="sorting">
+                    <option value="">Price</option>
+                    <option value="asc">Low To High</option>
+                    <option value="desc">High To Low</option>
+                </select>
+            </div>
+            <div id="filteringdata">
+                <p>Filter By</p>
+                <div id="pricefilter">
+                    <p>Price</p>
+                    <div><span><input type="radio" name="price_radio" id="first_radio" value="3000,5000"></span>
+                        3,000 To 5,000</div>
+                    <div><span><input type="radio" name="price_radio" id="second_radio" value="5000,10000"></span>
+                        5,000 To 10,000</div>
+                    <div><span><input type="radio" name="price_radio" id="third_radio" value="10000,20000"></span>
+                        10,000 To 20,000</div>
+                    <div><span><input type="radio" name="price_radio" id="fourth_radio" value="20000,Above"></span>
+                        20,000 Above</div>
+                </div>
+                <div id="destinationfilter">
+                    <!-- <div><span><input type="radio" name="destination_radio" id="first_destination"></span>
+                        Maharashtra</div> -->
+
+                </div>
+                <div id="durationfilter">
+                    
+                    <p>Duration</p>
+                    <div>
+                        <span><input type="radio" name="duration_radio" value="1 Nights / 1 Days" id="duration1"></span>
+                        1 Nights / 1 Days
+                    </div>
+                    <div>
+                        <span><input type="radio" name="duration_radio" value="2 Nights / 3 Days" id="duration2"></span>
+                        2 Nights / 3 Days
+                    </div>
+                    <div>
+                        <span><input type="radio" name="duration_radio" value="3 Nights / 4 Days" id="duration3"></span>
+                        3 Nights / 4 Days
+                    </div>
+                    <div>
+                        <span><input type="radio" name="duration_radio" value="6 Nights / 7 Days" id="duration4"></span>
+                        6 Nights / 7 Days
+                    </div>
+                    <div>
+                        <span><input type="radio" name="duration_radio" value="4 Nights / 5 Days" id="duration5"></span>
+                        4 Nights / 5 Days
+                    </div>
+                    <div>
+                        <span><input type="radio" name="duration_radio" value="5 Nights / 6 Days" id="duration6"></span>
+                        5 Nights / 6 Days
+                    </div>
+                    
+                </div>
+                <div id="clearfilter">
+                    <div class="">
+                        <button class="btn" onclick="ClearFilter()">Clear Filter</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="destination-content">
+
+        </div>
+    </div>
+    <div id="pagination-buttons"></div>
+    <footer id="footer"></footer>
+</body>
+  <script src="./packages.js"></script>
+  
+</html>

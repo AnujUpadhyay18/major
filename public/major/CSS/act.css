@@ -1,0 +1,93 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.main{
+    width: 100%;
+}
+.sect{
+    margin-left: 60px;
+    overflow: hidden;
+    width: 90vw;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(2,1fr);
+    row-gap: 20px;
+    column-gap: 10px;
+}
+.one{
+    background-color:rgba(248, 252, 253, 0.500);
+    border-radius: 10px;
+    overflow: hidden;
+    width: 400px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    height: 400px;
+    transition: 0.5s;
+    box-shadow: rgba(199, 240, 87, 0.4) 5px 2px 4px, rgba(131, 172, 92, 0.3) 10px 7px 13px -3px, rgba(186, 236, 152, 0.2) 0px -3px 0px inset;
+}
+
+
+.img img{
+left: 1px;
+top: 20px;
+position: absolute;
+height: 250px;
+width: 399px;
+}
+
+button{
+    cursor: pointer;
+    width: 80px;
+    font-weight: bolder;
+    font-size: 20px;
+    height: 23px;
+    border-radius: 5px;
+    border: none;
+    background-color:rgba(121, 153, 80, 0.582);
+}
+
+.content{
+    justify-content: space-evenly;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 140px;
+    position: relative;
+}
+.foot{
+    position: relative;
+    top: 10px;
+}
+
+
+@media (min-width:270px) and (max-width:420px) {
+    .sect{
+        border: none;
+        margin-left: 15px;
+        width: 96vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .img img{
+        border-radius: 10px;
+        width:390px;
+    }
+    .foot{
+        top: -110px;
+    }
+    
+}
+
+
+
+
+
+

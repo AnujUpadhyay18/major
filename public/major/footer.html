@@ -1,0 +1,155 @@
+<style>
+    .f_body {
+        padding: 0;
+        margin: 0;
+        position: relative;
+        top: 20px;
+        
+
+    }
+
+    .main_footer {
+    
+        position: relative;
+        display: flex;
+        background-color:#f0dada60;
+        height: 200px;
+        justify-content: space-evenly;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: bold;
+
+
+    }
+
+    .box {
+        
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        height: 150px;
+        margin-top: 30px;
+        cursor: pointer;
+
+    }
+
+    .box p {
+        margin-bottom: 20px;
+        text-align: left;
+        font-size: 22px;
+    }
+
+    .box2 {
+        justify-content: space-between;
+    }
+
+    .box3 {
+        justify-content: space-between;
+    }
+
+    .box4 p {
+        margin: 0;
+        margin-bottom: 20px;
+    }
+
+    .icon {
+        display: flex;
+        cursor: pointer;
+
+    }
+
+    .icon div {
+        margin-left: 10px;
+    }
+
+    ion-icon {
+        font-size: 30px;
+    }
+
+    span {
+        text-align: left;
+    }
+
+    #copy {
+
+        background-color:#f0dada60;
+        text-align: center;
+        font-size: 20px;
+        font-weight: bolder;
+    }
+
+    .line {
+        background-color: black;
+        height: 2px;
+    }
+
+    @media (min-width:270px) and (max-width:420px) {
+        .main_footer {
+            top: 90px;
+            height: auto;
+           display: grid;
+        
+        }
+        .box {
+        
+            margin-top: auto;
+            padding-top: 50px;
+        }
+        
+        .box1{
+            padding-top: 15px;
+    
+            height: 90px;
+        }
+        #copy{
+            position: relative;
+            top: 90px;
+        }
+        .line {
+            position: relative;
+            top: 90px;
+            
+        }
+
+    }
+</style>
+
+<body class="f_body">
+
+    <div class="main_footer">
+
+        <div class="box box1">
+            <p>Travelo</p>
+            <span>Discover your next</span>
+            <span>holiday destination</span>
+        </div>
+
+
+        <div class="box box2">
+            <span style="font-size: 22px;">Explore Travelo</span>
+            <span>Home</span>
+            <span>destination</span>
+            <span>Activities</span>
+            <span>Packages</span>
+        </div>
+
+        <div class="box box3">
+            <span style="font-size: 22px;">support</span>
+            <span>Contact us</span>
+            <span>About us</span>
+            <span>FaQ</span>
+        </div>
+        <div class="box box4">
+            <p style="font-size: 22px;">Connect with us</p>
+            <div class="icon">
+                <div><ion-icon name="logo-instagram" style="color: rgb(224, 31, 31);"></ion-icon></div>
+                <div><ion-icon name="logo-twitter" style="color: rgb(44, 31, 224);"></ion-icon></div>
+                <div><ion-icon name="logo-facebook" style="color: rgb(31, 115, 224);"></ion-icon></div>
+            </div>
+        </div>
+    </div>
+    <div class="line"> </div>
+    <div id="copy">All Rights &copy; Reserved by Travelo Tour</div>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>

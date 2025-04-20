@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ 
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Grey+Qo&display=swap');
+        </style>
+
+    <link rel="stylesheet" href="/major/CSS/app.css">
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+        $("#header").load("/major/header.html"); 
+        $("#footer").load("/major/footer.html")
+    });
+    </script>
+</head>
+<body>
+
+
+
+
+   <header id="header"></header>
+
+   <!-- background images start here  -->
+    <div class="travel_gif">
+        <img src=" /major/Images//travel.gif" alt="image1">
+    </div>
+
+    <div class="travelo">Travelo</div>
+
+    <div class="men">
+        
+        <img src=" /major/Images//man.png" alt="image 2">
+    </div>
+
+    <div class="dark_img">
+        <img src=" /major/Images//mountain.png" alt="image3">
+    </div>
+     <!-- background images end here  -->
+
+     <div class="p_content">
+        <p class="content">Welcome to the Travelo . Here, we share our commitment to promoting sustainable and responsible tourism through the power of technology. Our open-source projects aim to create innovative tools that make it easier for ecotourism enthusiasts to find sustainable travel experiences and learn about environmental conservation. We believe that collaboration and technology can be powerful tools in promoting sustainable tourism, and we invite you to join us in our mission to protect the planet through responsible travel.</p>
+
+        <button class="subscribe"><a href="login.html" style="text-decoration-line: none; color: white;">Subscribe</a></button>
+     </div>
+
+     <div class="aero">
+        <img src=" /major/Images/aeroplane.gif" alt="aeroplane" class="plane">
+     </div>
+
+    <div class="discover">
+        <div class="para"><h1>Discover the touch of Nature</h1></div>
+
+        <div class="tour_imgs">
+            <div class="img_cont"><a href="" class="lnk"><img src=" /major/Images//indonesia.jpg" alt=""></a>
+            <p>Indonesia</p></div>
+
+            <div class="img_cont"><a href="" class="lnk"><img src=" /major/Images//himanchal.jpg" alt=""></a><p>Himanchal</p></div>
+
+            <div class="img_cont"><a href="" class="lnk"><img src=" /major/Images//gujrat.jpg" alt=""></a><p>Gujrat</p></div>
+
+            <div class="img_cont"><a href="" class="lnk"><img src=" /major/Images//maharashtra.jpg" alt=""></a><p>Maharashtra</p></div>
+
+        </div>
+    </div>
+
+    <div class="services">
+        <div class="ser-content">
+          What services we provide
+        </div>
+        <div class="offer">
+            <div class="card">
+                <div style="color: black;"><p>Cotegory</p>
+                    <h3>Travel plan</h3>
+                </div>
+                <img src=" /major/Images//trip.gif" alt="img12">
+               
+            </div>
+    
+            <div class="card">
+               <div> <p>Cotegory</p>
+                <h3>Flight booking</h3>
+               </div>
+                <img src=" /major/Images//flight booking.gif" alt="img13">
+    
+            </div>
+    
+            <div class="card">
+               <div > <p>Cotegory</p>
+                <h3>accomodation</h3>
+               </div>
+                <img src="/major/Images//accomodation.gif" alt="img14">
+    
+            </div>
+        </div>
+    
+    </div>
+    <footer id="footer"></footer>
+     <script>
+        const Ele = document.querySelector('.men');
+
+window.addEventListener('scroll',()=>{
+    
+    const scr2=window.scrollY;
+    
+    
+    if(Math.ceil(scr2)>100 && Math.ceil(scr2)<=150)
+        Ele.style.transform=`translateY(250px)`
+    
+    else if(Math.ceil(scr2)<=100)
+        {Ele.style.transform=`translateY(1px)`
+        }
+      
+})
+     </script>
+</body>
+</html>

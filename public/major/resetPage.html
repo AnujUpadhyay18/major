@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Reset</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lineicons@3.0.0/dist/css/lineicons.css">
+    <link rel="stylesheet" href="./register_files/bootstrap.min.css">
+    <link rel="stylesheet" href="./register_files/line-icons.css">
+    <link rel="stylesheet" href="./register_files/owl.carousel.min.css">
+    <link rel="stylesheet" href="./register_files/owl.theme.default.css">
+    <link rel="stylesheet" href="./register_files/slicknav.min.css">
+    <link rel="stylesheet" href="./register_files/animate.css">
+    <link rel="stylesheet" href="./register_files/main.css">    
+    <link rel="stylesheet" href="./register_files/responsive.css">
+    <link rel="stylesheet" href="./JobXSearch/main.css">
+    <link href="https://cdn.lineicons.com/5.0/lineicons.css" rel="stylesheet">
+  <link rel="stylesheet" id="colors" href="./register_files/cyan.css" type="text/css"><link rel="stylesheet" href="./register_files/color-switcher.css" type="text/css">
+
+
+
+
+    <style>
+        /* Background Styling */
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Animated Password Reset Container */
+        .password-reset-box {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        /* Fade-In Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Input Styling */
+        .input-icon {
+            position: relative;
+        }
+
+        .input-icon i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+        }
+
+        .form-control {
+            padding-left: 40px;
+        }
+
+        /* Show/Hide Password */
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #888;
+        }
+
+        .toggle-password:hover {
+            color: #007bff;
+        }
+
+        /* Reset Button Styling */
+        .btn-common {
+            background-color:#00BCD4;
+            color: #fff;
+            border-radius: 5px;
+            padding: 10px;
+            width: 100%;
+            font-size: 16px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn-common:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Password Reset Container -->
+<div class="password-reset-box">
+    <h4>Reset Password</h4>
+    <p class="text-muted">Enter a new password to reset your account.</p>
+
+    <form onsubmit="resendPassword(event)">
+        <div class="form-group" >
+            <div class="input-icon">
+                <i class="lni lni-lock"></i>
+                <input type="password" class="form-control m-3" id="new-password" placeholder="New Password">
+                <i class="lni lni-eye toggle-password" data-target="#new-password"></i>
+            </div>
+        </div>
+        <div class="form-group mt-3">
+            <div class="input-icon">
+                <i class="lni lni-lock"></i>
+                <input type="password" class="form-control m-3" id="confirm-password" placeholder="Confirm Password">
+                <i class="lni lni-eye toggle-password" data-target="#confirm-password"></i>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-common log-btn mt-4">Reset Password</button>
+    </form>
+
+    <p class="mt-3"><a href="/login.html">Back to Login</a></p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Show/Hide Password Toggle
+    document.querySelectorAll(".toggle-password").forEach(icon => {
+        icon.addEventListener("click", () => {
+            let targetInput = document.querySelector(icon.getAttribute("data-target"));
+            if (targetInput.type === "password") {
+                targetInput.type = "text";
+                icon.classList.remove("lni-eye");
+                icon.classList.add("lni-eye-off");
+            } else {
+                targetInput.type = "password";
+                icon.classList.remove("lni-eye-off");
+                icon.classList.add("lni-eye");
+            }
+        });
+    });
+</script>
+<script>
+    async function resendPassword(event) {
+        event.preventDefault();
+
+        const password = document.getElementById("new-password").value;
+        const confirm_password = document.getElementById("confirm-password").value;
+
+        if (password !== confirm_password) {
+            alert("Password and confirm password do not match.");
+            return;
+        }
+
+        // ✅ Extract the token from the URL
+        const token = window.location.pathname.split("/").pop();
+
+        try {
+            const res = await fetch(`http://localhost:3000/auth/reset-password/${token}`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ newPassword: password })
+            });
+
+            const result = await res.json();
+
+            if (res.ok) {
+                alert("Password changed successfully.");
+               // window.location.href = "Login.html"; 
+            } else {
+                alert(`Error: ${result.message || "Password reset failed"}`);
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Something went wrong.");
+        }
+    }
+</script>
+
+</body>
+</html>

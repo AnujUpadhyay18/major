@@ -1,0 +1,366 @@
+@import url('https://fonts.googlepis.com/css2?famaliy=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif; 
+}
+
+
+body {
+    margin: 0%;
+    padding: 0%;
+    font-family: Arial, sans-serif;
+    background-color: rgb(249, 247, 247);
+}
+
+#Middle {
+display: flex;
+margin: 4em 2em ;
+justify-content: center;
+}
+
+
+#left{
+width: 20vw;
+}
+
+#sortingdata, #filteringdata{
+margin:1em;
+}
+#sortingdata > p, #filteringdata > p{
+font-size: larger;
+margin-left:.4em;
+}
+
+.destination-card{
+box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+border-radius: 10px;
+background-color: #f2eeee;
+display: flex;
+padding: 10px;
+margin: 10px;
+width: 60vw;
+cursor: pointer;
+
+}
+
+ .destination-card:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+  }
+
+  .destination-card:hover .cardImg img {
+    opacity: 0.6;
+  }
+  
+  .destination-card:hover .cardImg img:hover {
+    opacity: 1;
+  }
+
+
+.cardImg{
+max-height: 100%;
+}
+
+.destination-img{
+width:300px;
+height: 95%;
+max-height: 100%;
+object-fit: cover;
+border-radius: 10px;
+}
+
+.destination-card-body{
+width: 100%;
+padding: 0 10px;
+margin-left: 20px;
+}
+
+
+.destination-title{
+color: #000;
+font-size: 16px;
+margin-top: 35px;
+padding: 0px 15px;
+}
+
+.destination-plan{
+color: rgb(121, 88, 152);
+font-size: small;
+font-weight: bold;
+vertical-align: middle;
+padding: 0px 15px;
+
+}
+.destination-duration-price{
+    margin-bottom: -25px;
+    
+}
+
+.destination-price{
+float: right;
+color: rgb(121, 88, 152);
+/* font-size:20px; */
+font-weight: bold;
+vertical-align: middle;
+
+}
+
+.destination-location, .destination-name{
+/* font-size:22px; */
+padding: 0px 15px;
+}
+
+.destination-name{
+font-weight: bold;
+font-size: 15px;
+}
+
+
+.cardBtn{
+display: flex;
+margin-top:7px;
+justify-content: space-between;
+
+}
+
+.destination-button {
+appearance: none;
+background-color: rgb(240, 240, 240);
+border:none;
+border-radius: 0.9375em;
+box-sizing: border-box;
+color: #000;
+cursor: pointer;
+display: inline-block;
+font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+font-size: 16px;
+font-weight: 600;
+line-height: normal;
+margin: 0;
+min-height: 2.75em;
+min-width: 0;
+outline: none;
+padding: 0em 0.6em;
+text-align: center;
+text-decoration: none;
+transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+user-select: none;
+-webkit-user-select: none;
+touch-action: manipulation;
+will-change: transform;
+
+}
+
+.destination-button:disabled {
+pointer-events: none;
+}
+
+.destination-button:hover {
+color: #fff;
+background-color: #359381;
+box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+transform: translateY(-2px);
+}
+
+.destination-button:active {
+box-shadow: none;
+transform: translateY(0);
+}
+
+
+/* searchbar */
+
+ #searchbar {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    margin-top:2em;
+    margin-bottom: -50px;
+}
+
+#searchbar input,#sortingdata select {
+    width: 40%;
+    margin: .3rem;
+    background-color: #e4e4e4;
+    color: #000;
+    padding: 1rem 2rem;
+    min-height: 40px;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    border: none;
+    line-height: 1.15;
+    box-shadow: 0px 10px 20px -18px;
+}
+ #sortingdata select{
+    width: 12vw;
+} 
+#searchbar input::placeholder, #sortingdata select::placeholder{
+    color: #000;
+} 
+
+#searchbar input:focus, #sortingdata select:focus {
+    border-bottom: 2px solid #7cbba8;
+    border-radius: 4px 4px 2px 2px;
+}
+
+ #searchbar input:hover, #sortingdata select:hover {
+    outline: 1px solid lightgrey;
+} 
+
+
+ #searchbar select {
+    padding: .15rem .5rem;
+} 
+
+
+
+ /* checkbox */
+#pricefilter, #destinationfilter, #durationfilter{
+    margin:1em .4em;
+    line-height: 1.8em;
+} 
+
+ #pricefilter > p, #destinationfilter> p, #durationfilter> p{
+    color: rgb(121, 88, 152);
+    font-weight: bold;
+} 
+ #pricefilter input, #destinationfilter input, #durationfilter input{
+width: auto;
+}  
+
+.btn{
+
+width: fit-content;
+}
+
+
+
+@media screen and (max-width: 768px) and (min-width:426px) {
+#Middle{
+    flex-direction: column;
+}
+
+#left, #destination-content{
+    width: 100%;
+}
+#left{
+    text-align: center;
+}
+#sortingdata select{
+    width: 80vw;
+}
+
+.destination-card{
+    width: 100%;
+}
+
+
+}
+
+
+@media screen and (max-width: 425px) and (min-width:300px) {
+#Middle{
+    flex-direction: column;
+}
+
+#left, #destination-content{
+    width: 100%;
+}
+#left{
+    text-align: center;
+}
+#sortingdata select{
+    width: 80vw;
+}
+
+.destination-card{
+    width: 100%;
+    flex-direction: column;
+}
+.cardImg{
+    margin: auto;
+}
+.destination-card-body{
+    margin-left: 0px;
+}
+.destination-img{
+    width: 100%;
+}
+}
+
+
+
+
+#pagination-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: -3em;
+    margin-left: 100px;
+    margin-bottom: 50px;
+    
+  }
+  
+  #pagination-buttons button {
+    margin: 0 0.25em;
+    padding: 0.5em 1em;
+    background-color: #e6dcdc;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  }
+  
+  #pagination-buttons button:hover {
+    background-color: #bcbaba;
+  }
+
+  #clearfilter .btn{
+    color: white;
+    background-color: rgb(121, 88, 152);
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    height: 30px;
+    width: 130px;
+    font-family:'Courier New', Courier, monospace;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  #clearfilter .btn:hover{
+    color: #fff;
+    background-color: #359381;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+  }
+
+  #pricefilter>div{
+    /* font-size: 10px; */
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  
+  #durationfilter>div{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    /* font-weight:lighter; */
+   
+  }
+ #sortingdata>p{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight:bold;
+  }
+
+  #filteringdata>p{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight:bold;
+  }
+
+  #searchbar>input{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* font-weight:bold; */
+    font-size: large;
+  }

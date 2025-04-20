@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="./IMAGES/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./IMAGES/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./IMAGES/favicon-16x16.png">
+    <link rel="manifest" href="./IMAGES/site.webmanifest">
+    <title>Destinations</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+        <script>
+        $(function () {
+            $("#header").load("/header/pages.html");         
+            $("#footer").load("/footer/footer.html");
+
+        });
+        
+    </script>
+
+    <link rel="stylesheet" href="destination.css">
+
+</head>
+
+<body>
+    
+
+    <!-- navigation bar starts here -->
+        
+        <header id="header"></header>
+    <!-- navigation bar ends here -->
+
+    <!-- main section starts here -->
+    <section id="destinations">
+        <!-- data will be appended here -->
+        <div class="container">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+    </section>
+    <!-- main section ends here -->
+
+
+
+    <footer id="footer"></footer>
+
+</body>
+
+<script src="destination.js"></script>
+
+</html>

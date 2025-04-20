@@ -1,38 +1,19 @@
 const mongoose = require('mongoose');
-
+const tourSchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  description: { type: String, required: true }
+});
 const jobSchema = new mongoose.Schema(
   {
-    title: { type: String },
-    Employer_id: { type: mongoose.Schema.Types.ObjectId, ref: "Employer", required: true },
-
-    company: { type: String},
-    location: { type: String }, // Optional
-    category: { 
-      type: String, 
-      enum: ["Education/Training", "IT & Engineering", "Art/Design", "Sale/Markting", "Healthcare", "Others","Food Services"], 
-      
-    },
-
-    skills:[{type:String}],
-    tags: [{ type: String }], // e.g., PHP, Social Media
-    salary: { type: Number },
-    experience: { type: String },
-    jobType: { 
-      type: String, 
-      enum: ["Full-time", "Part-time", "Contract", "Internship", "Freelance"], 
-      
-    },
-
-    description: { type: String, required: true },
-    applicationURL: { type: String },
-    closingDate: { type: Date },
-
-    companyWebsite: { type: String },
-    tagline: { type: String },
-    logo: { type: String }, 
-    jdFile: { type: String }, 
-
-    applicants: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    id: { type: Number, required: true, unique: true },
+    title: { type: String, required: true },
+    duration: { type: String, required: true },
+    destination: { type: String, required: true },
+    location: { type: String, required: true },
+    description: [{ type: String }],
+    image: [{ type: String }],
+    tour: [tourSchema],
+    price: { type: Number, required: true }
   },
   { timestamps: true }
 );

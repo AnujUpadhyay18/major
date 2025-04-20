@@ -1,0 +1,277 @@
+@import url('https://fonts.googlepis.com/css2?famaliy=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom right, #FFFFFF, #F9F9F9);
+    background-size: cover;
+  }
+  
+  #destinations {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 8%;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+  }
+  
+  .destcard {
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    margin-bottom: 30px;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
+  }
+  
+  .destcard:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+  }
+  
+  .destcard:hover .dest-carousel-images img {
+    opacity: 0.6;
+  }
+  
+  .destcard:hover .dest-carousel-images img:hover {
+    opacity: 1;
+  }
+  
+  .destcard .dest-card-title {
+    padding: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #444444;
+    text-align: center;
+    z-index: 100%;
+    opacity: 100%;
+  }
+  
+  .card .dest-carousel {
+    position: relative;
+  }
+  
+  .dest-carousel-images {
+    display: flex;
+    overflow-x: hidden;
+    height: 300px;
+    position: relative;
+  }
+  
+  .dest-carousel-images img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    animation-name: fade;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+  }
+  
+  .dest-carousel-images img:first-child {
+    opacity: 1;
+  }
+  
+  @keyframes fade {
+    from {
+      opacity: -1;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .dest-indicators {
+    display: none;
+  }
+  
+  .read-more-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color:#7f8685;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    width: 30%;
+  }
+  
+  .read-more-btn:hover {
+    background-color: lightslategrey;
+  }
+  
+  @media only screen and (max-width: 400px) {
+    #destinations {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+  
+  @media screen and (max-width: 767px) {
+    /* Styles for mobile devices */
+    #destinations {
+      grid-template-columns: repeat(1, 1fr);
+      padding: 5%;
+    }
+  
+    .destcard {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+  
+    .destcard .dest-card-title {
+      font-size: 20px;
+    }
+  
+    .dest-carousel-images {
+      height: 200px;
+    }
+  
+    .read-more-btn {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background-color:#7f8685;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 20px;
+        cursor: pointer;
+        width: 30%;
+    }
+    
+    .read-more-btn:hover {
+        background-color: lightslategrey;
+    }
+    
+    .destcard {
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        max-width: 600px;
+        margin-bottom: 30px;
+        border: 1px solid #ddd;
+    }
+    
+    .destcard:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        z-index: 1;
+    }
+    
+    .destcard .dest-card-title {
+        padding: 20px;
+        font-size: 30px;
+        font-weight: bold;
+        color: #444444;
+        text-align: center;
+        z-index: 100%;
+    }
+    
+    .card .dest-carousel {
+        position: relative;
+    }
+    
+    .dest-carousel-images {
+        display: flex;
+        overflow-x: hidden;
+        height: 300px;
+        position: relative;
+    }
+    
+    .dest-carousel-images img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        animation-name: fade;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+    }
+    
+    .dest-carousel-images img:first-child {
+        opacity: 1;
+    }
+    
+    @keyframes fade {
+        from {
+            opacity: -1;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    
+    .dest-indicators {
+        display: none;
+    }
+    
+    @media only screen and (max-width: 400px) {
+        #destinations {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+    
+    @media screen and (max-width: 767px) {
+        /* Styles for mobile devices */
+        #destinations {
+            grid-template-columns: repeat(1, 1fr);
+            padding: 5%;
+        }
+    
+        .destcard {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+    
+        .destcard .dest-card-title {
+            font-size: 20px;
+        }
+    
+        .dest-carousel-images {
+            height: 200px;
+        }
+    
+        .read-more-btn {
+            width: 50%;
+        }
+    }
+    
+    @media screen and (min-width: 768px) and (max-width: 1023px) {
+        /* Styles for tablets */
+        #destinations {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    
+        .destcard .dest-card-title {
+            font-size: 22px;
+        }
+    }
+    
+    @media screen and (min-width: 1024px) {
+        /* Styles for desktops and laptops */
+        #destinations {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    c
+        .destcard .dest-card-title {
+            font-size: 25px;
+        }
+    }
+    
+}

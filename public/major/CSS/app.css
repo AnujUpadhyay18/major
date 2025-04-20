@@ -1,0 +1,366 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.travel_gif {
+    height: 500px;
+    width: 95vw;
+    left: 20px;
+    position: relative;
+    z-index: -1;
+
+}
+
+.travel_gif img {
+    height: 500px;
+    width: 65vw;
+    position: relative;
+    left: 180px;
+}
+
+.travelo {
+    font-size: 180px;
+    font-weight: bolder;
+    position: absolute;
+    left: 450px;
+    top: 120px;
+    z-index: 2;
+    font-family: "Grey Qo", cursive;
+}
+
+.men {
+    height: 500px;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    overflow: hidden;
+    top: 50px;
+    transition: 4s;
+
+
+}
+
+.men img {
+
+    width: 2200px;
+    height: 550px;
+    position: absolute;
+    left: -420px;
+
+}
+
+.dark_img {
+    position: absolute;
+    top: 150px;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.dark_img img {
+    width: 2200px;
+    position: absolute;
+    left: -400px;
+    top: -190px;
+}
+
+.p_content {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    color: white;
+    top: 10px;
+    width: 100%;
+    height: 300px;
+    background-color: #240404;
+    align-items: center;
+    z-index: 3;
+}
+
+.content {
+
+    width: 50%;
+    position: relative;
+    top: 50px;
+}
+
+.subscribe {
+    background-color: #ff0000;
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    position: relative;
+    top: 70px;
+    cursor: pointer;
+}
+
+.aero {
+    background-color: #240404;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.plane {
+    width: 400px;
+    height: 200px;
+
+}
+
+.discover {
+    background-color: #240404;
+    color: wheat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.para {
+    position: relative;
+    top: 20px;
+    font-size: xx-large;
+    padding-bottom: 20px;
+}
+
+.tour_imgs {
+    width: 100%;
+    height: 600px;
+    display: grid;
+    grid-template-rows: repeat(1, 1fr);
+    grid-template-columns: repeat(4, 1fr); 
+}
+
+.img_cont {
+    box-shadow: rgba(224, 243, 51, 0.25) 0px 30px 60px -12px inset, rgba(216, 221, 166, 0.3) 0px 18px 36px -18px inset;
+    margin: auto auto;
+    display: flex;
+    flex-direction: column;
+    transition: 1s;
+    border-radius: 15px;
+
+}
+
+.img_cont a img {
+    border-radius: 15px;
+    width: 310px;
+    height: 450px;
+    position: relative;
+}
+
+
+.img_cont:hover {
+    transform: scale(1.06);
+}
+
+.img_cont p {
+    color: white;
+    font-size: 40px;
+    text-align: center;
+}
+
+.offer {
+
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 500px;
+    background-color: #240404;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.card {
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(224, 243, 51, 0.25) 0px 30px 60px -12px inset, rgba(216, 221, 166, 0.3) 0px 18px 36px -18px inset;
+    width: 420px;
+    height: 550px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.4s;
+    position: relative;
+
+}
+
+.card div {
+    position: absolute;
+    top: 40px;
+    left: 50px;
+    color: rgba(216, 221, 187, 0.959);
+
+
+}
+
+.card img {
+    width: 350px;
+    height: 500px;
+    border-radius: 30px;
+}
+
+.services {
+    display: flex;
+    flex-direction: column;
+    background-color: #240404;
+    height: 700px;
+}
+
+.ser-content {
+    background-color: #240404;
+    color: white;
+    padding-bottom: 40px;
+    font-size: 50px;
+    font-weight: bolder;
+    margin: auto auto;
+    position: relative;
+}
+
+.card:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+
+@media (min-width:270px) and (max-width:420px) {
+    .travel_gif {
+        height: 200px;
+        left: -90px;
+    }
+
+    .travel_gif img {
+        height: 200px;
+        left: 140px;
+    }
+
+    .men {
+        top: 74px;
+        width: 100%;
+        height: 220px;
+    }
+
+    .men img {
+
+        width: 550px;
+        height: 200px;
+        position: absolute;
+        left: -100px;
+    }
+
+    .travelo {
+        font-size: 50px;
+        left: 100px;
+    }
+
+    .dark_img {
+        position: relative;
+        top: -150px;
+        height: 130px;
+       
+    }
+    
+    .dark_img img {
+        width: 550px;
+        left: -100px;
+        top: -35px;
+    }
+
+    .p_content {
+        top: -155px;
+        width: 100%;
+        height: 500px;
+        
+    }
+
+    .content {
+        width: 75%;
+        top: 50px;
+    }
+
+    .aero {
+        height: 120px;
+        top: -155px;
+        position: relative;
+          }
+    
+    .plane {
+        width: 200px;
+        height: 100px;
+    
+    }
+
+    .discover {
+      position: relative;
+      top: -155px;
+    }
+    .para{
+        text-align: center;
+        font-size: 20px;
+    }
+
+   .tour_imgs {
+        height: 1790px;
+     display: flex;
+     flex-direction: column;
+        }
+
+    .img_cont{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    
+  .img_cont a img {
+        margin-top: 20px;
+        margin-left: 16vw;
+        width: 260px;
+        height: 350px;
+        border-radius: 10px;
+    }
+      
+.offer {
+        flex-direction: column;
+        height: 1280px;      
+    }    
+
+    .card{
+
+        box-shadow: rgba(224, 243, 51, 0.25) 0px 30px 60px -12px inset, rgba(216, 221, 166, 0.3) 0px 18px 36px -18px inset;
+        border-radius: 15px;
+        margin-bottom: 20px;
+        width: 98%;
+        height: 450px;
+    }
+    
+    .card img {
+        width: 260px;
+        height: 350px;
+        border-radius: 10px;
+    }
+    .services {
+        position: relative;
+        top: -155px;
+        height: 1200px;
+    }
+    
+    .ser-content {
+        padding-top: 40px;
+        font-size: 40px;
+        margin: auto auto;
+        text-align: center;
+
+    }
+    .card div {
+        margin-left: 10vw;
+    }
+
+
+}

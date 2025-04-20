@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity</title>
+    <link rel="stylesheet" href="act.css">
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+            $("#header").load("/header/pages.html");
+            $(".foot").load("/footer/footer.html")
+        });
+    </script>
+</head>
+
+<body>
+    <div id="header"></div>
+    <div class="main">
+        <section class="sect">
+            <div class="one ">
+                <div class="img">
+                    <img src="/source/box1.1.jpeg" alt="1.1" class="slide">
+                    <img src="/source/box1.2.jpg" alt="1.2" class="slide">
+                    <img src="/source/box1.3.jpg" alt="1.3" class="slide">
+                </div>
+
+                <div class="content">
+                    <div >
+                        <button onclick="minus(1)" id="decrese"><</button>
+                        <button onclick="plus(1)" id="increse">></button>
+                    </div>
+                    <div class="heding">
+                        <h1>Tracking Place-India</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="one ">
+                <div class="img">
+                    <img src="/source/box2.1.jpeg" alt="2.1" class="slide2">
+                    <img src="/source/box2.2.jpeg" alt="2.2" class="slide2">
+                    <img src="/source/box2.3.webp" alt="2.3" class="slide2">
+                </div>
+                <div class="content">
+                    <div >
+                        <button id="decrese" onclick="minus(2)"><</button>
+
+                                <button onclick="plus(2)" id="increse">></button>
+                    </div>
+                    <div class="heding">
+                        <h1 style="align-items: center;">Scuba Diving Places-India</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="one ">
+                <div class="img">
+                    <img src="/source/box3.1.jpg" alt="3.1" class="slide3">
+                    <img src="/source/box3.2.jpg" alt="3.2" class="slide3">
+                    <img src="/source/box3.3.jpg" alt="3.3" class="slide3">
+                </div>
+               <div class="content">
+                <div >
+                    <button id="decrese" onclick="minus(3)">
+                        <</button>
+                            <button id="increse" onclick="plus(3)">></button>
+                </div>
+                <div class="heding">
+                    <h1 style="align-items: center;">Paragliding Places-India</h1>
+                </div>
+               </div>
+            </div>
+
+            <div class="one ">
+                <div class="img">
+                    <img src="/source/box4.1.jfif" alt="4.1" class="slide4">
+                    <img src="/source/box4.2.jfif" alt="4.2" class="slide4">
+                    <img src="/source/box4.3.jfif" alt="4.3" class="slide4">
+                </div>
+             <div class="content">
+                <div >
+                    <button id="decrese" onclick="minus(4)">
+                        <</button>
+                            <button id="increse" onclick="plus(4)"> ></button>
+                </div>
+                <div class="heding">
+                    <h1>Historical Place-India</h1>
+                </div>
+             </div>
+            </div>
+
+            <div class="one ">
+                <div class="img">
+                    <img src="/source/box5.1.webp" alt="5.1" class="slide5">
+                    <img src="/source/box5.2.webp" alt="5.2" class="slide5">
+                    <img src="/source/box5.3.webp" alt="5.3" class="slide5">
+                </div>
+          <div class="content">
+            <div >
+                <button id="decrese" onclick="minus(5)">
+                    <</button>
+                        <button onclick="plus(5)" id="increse">></button>
+            </div>
+            <div class="heding">
+                <h1>Heritage Homes Stays-India</h1>
+            </div>
+          </div>
+            </div>
+
+            <div class="one ">
+                <div class="img">
+                    <img src="/source/box6.1.jpeg" alt="6.1" class="slide6">
+                    <img src="/source/box6.2.jpg" alt="6.2" class="slide6">
+                    <img src="/source/box6.3.webp" alt="6.3" class="slide6">
+                </div>
+             <div class="content">
+                <div >
+                    <button id="decrese" onclick="minus(6)">
+                        <</button>
+                            <button onclick="plus(6)" id="increse">></button>
+                </div>
+                <div class="heding">
+                    <h2>Camping Places-India</h3>
+                </div>
+             </div>
+            </div>
+
+        </section>
+    </div>
+    
+
+<div class="foot"></div>
+
+    <script src="activity.js"></script>
+</body>
+
+</html>
+

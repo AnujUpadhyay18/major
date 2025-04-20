@@ -1,0 +1,138 @@
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar {
+    
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:whitesmoke;
+    padding: 10px 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.burger {
+    display: none;
+    cursor: pointer;
+    border: 2px solid blueviolet;
+    border-radius: 5px;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    
+    background-color:red;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+.but button{
+    display: none;
+    font-size: 20px;
+    font-weight: bolder;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+        color: red;
+        cursor: pointer;
+    }
+
+
+@media screen and (max-width: 420px) {
+    
+    .nav-links {
+        z-index: 100;
+        display:none;
+        width: 40vw;
+        height: 100%;
+        position: absolute;
+        top:0px;
+        left: 250px;
+        background-color:whitesmoke;
+       
+    }
+    .but button{
+        display: block;
+    }
+    
+    .home{
+        padding-top: 30px;
+    }
+
+    .nav-links li {
+        margin: 20px 10px;
+    }
+   
+    .burger {
+        display: block;
+    }
+}
+
+
+</style>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Travelo</div>
+            <ul class="nav-links">
+                <li class="but"><button class="bt">X</button></li>
+                <li class="home"><a href="../index.html">Home</a></li>
+                <li><a href="/destinaton/destination.html">destination</a></li>
+                <li><a href="/activities/activities.html">Activities
+                </a></li>
+                <li><a href="/packages/packages.html">Packages</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="/project/login.html">Login</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+    <script>
+        const show=document.querySelector('.burger')
+        const off=document.querySelector('.bt')
+        const dis=document.querySelector('.nav-links')
+        show.addEventListener('click',()=>{
+            dis.style.display = "inline-block";
+            
+        })
+
+        off.addEventListener('click',()=>{
+            console.log("bye")
+            dis.style.display='none'
+        })
+</script>
+</body>

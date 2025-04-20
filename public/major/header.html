@@ -1,0 +1,186 @@
+<style>
+
+.container{
+    display: flex;
+}
+.logo{
+    height: 15vh;
+}
+.logo img{
+    margin-top: 15px;
+    height: 10vh;
+    width: 5vw;
+}
+.main_container{
+    width: 90vw;
+    height: 15vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+    left: 2vw;
+    
+}
+
+.header_link{
+    text-decoration-line: none;
+    color: black;
+    font-size: 20px;
+    font-weight: bolder;
+    position: relative;
+    top: 5px;
+    margin-left: 20px;
+    margin-right: 20px;
+
+}
+
+.sub_container{
+    background-color:#a3c2c2;
+    width:fit-content;
+    height: 40px;
+    border-radius: 40px;
+    text-align: center;
+}
+
+.menu{
+    border-radius: 5px;
+    border: 2px solid black;
+    width: 30px;
+    cursor: pointer;
+    height: 25px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.bar{
+    margin-top: 3px;
+    width: 20px;
+    height: 3px;
+    background-color: red;
+}
+
+.xbut{
+    display: none;
+    font-size: 20px;
+    font-weight: bolder;
+    border-radius: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+        color: red;
+        cursor: pointer;
+}
+
+
+@media (min-width:270px) and (max-width:420px){
+    .logo img{
+    margin-top: 15px;
+    height: 10vh;
+    width: 20vw;
+}
+    .main_container{
+        transition: 0.4s;
+        left: 50vw;
+        z-index: 10;
+        position: absolute;
+        display: none;
+        height: 100vh;
+        width: 50vw;
+        background-color: #a3c2c2;
+    }
+    .sub_container{
+        margin-top: 20px;
+        
+    }
+
+    .home{
+        margin-top: 100px;
+    }
+
+.menu{
+    display: flex;
+    position: absolute;
+    top: 5vh;
+    left: 75vw;
+
+}
+
+.xbut{
+    top: 30px;
+    left: 20px;
+    display: block;
+    position:absolute;
+}
+
+}
+
+</style>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="/major/Images/logo.png" alt="">
+        </div>
+        <div class="main_container">
+            <button class="xbut">X</button>
+
+            <div class="sub_container home">
+            <a href="#" class="header_link ">Home</a>     
+    
+            </div>
+    
+    
+            <div class="sub_container">
+                <a href="/major/destination.html" class="header_link">Destination</a>
+    
+            </div>
+    
+    
+    
+            <div class="sub_container">
+                <a href="/major/activities.html" class="header_link">Activities</a>
+    
+            </div>
+    
+    
+            <div class="sub_container">
+                <a href="/major/packages.html" class="header_link">Packages</a>
+    
+            </div>
+    
+    
+            <div class="sub_container">
+                <a href="#" class="header_link">About Us</a>
+    
+            </div>
+    
+    
+            <div class="sub_container">
+                <a href="/major/login.html" class="header_link">Login</a>
+    
+            </div>
+        </div>
+    </div>
+    <button class="menu" >
+            <span class="bar span1"></span><span class="bar span2"></span><span class="bar span3" style="margin-bottom: 3px;"></span>
+    </button>
+    
+    
+  <script>
+    const container=document.querySelector(".main_container");
+    const off=document.querySelector('.xbut')
+    const bt=document.querySelector('.menu')
+    bt.addEventListener('click',()=>{
+        container.style.display='inline-block'
+    })
+
+    off.addEventListener('click',()=>{
+      container.style.display='none'
+    })
+    
+
+  </script>
+
+
+</body>

@@ -52,7 +52,7 @@ app.get('/dash', (req, res) => {
 app.get('/job',(req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'postjob.html')); // assuming it's in 'frontend'
 });
-
+ 
 app.get('/otp', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'otp.html')); // adjust path if needed
 });
@@ -61,7 +61,7 @@ app.get('/ragi', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'browse-jobs.html')); 
+  res.sendFile(path.join(__dirname, 'public', '/major/index.html')); 
 });
 
 
