@@ -364,3 +364,58 @@ body {
 
 
 }
+.ai-assistant-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 30px;
+    background-color: #0a66c2;
+    color: white;
+    padding: 12px;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+    z-index: 999;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .ai-assistant-icon:hover {
+    transform: scale(1.1);
+    background-color: #084a96;
+  }
+  
+  .ai-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+  }
+  
+  .ai-modal-content {
+    position: absolute;
+    bottom: 80px;
+    right: 30px;
+    width: 400px;
+    height: 500px;
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  }
+  
+  .ai-close {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    z-index: 1;
+  }
+  

@@ -1,52 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>my document</title>
-    <link rel="stylesheet" href="login.css">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
-    <!-- <link rel="icon" type="image/x-icon" href="./IMAGES/logo.png"> -->
-
-    <link rel="apple-touch-icon" sizes="180x180" href="./IMAGES/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="./IMAGES/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="./IMAGES/favicon-16x16.png">
-<link rel="manifest" href="./IMAGES/site.webmanifest">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <link rel="stylesheet" href="./CSS/login.css" />
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./Images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./Images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./Images/favicon-16x16.png">
+  <link rel="manifest" href="./Images/site.webmanifest">
 </head>
 <body>
-    <a style="color: red; margin-left: 20px; margin-top: 20px; text-decoration: none; z-index: 1000;" href="../index.html">Home</a>
-    <div class="main">
-        <img src="img2.jpg"   class="img">
-        <div class="submain">
-            <span class="pan">Login</span>
-            <div class="row1">
-                <i class="uil uil-envelope icon"></i>   
-                <input type="text" placeholder="Email" id="email">
-            </div>
+  <a style="color: red; margin-left: 20px; margin-top: 20px; text-decoration: none; z-index: 1000;" href="./index.html">Home</a>
+  
+  <div class="main">
+    <img src="./Images/img2.jpg" class="img" />
+    <div class="submain">
+      <span class="pan">Login</span>
+      
+      <form id="login-form">
+        <div class="row1">
+          <i class="uil uil-envelope icon"></i>   
+          <input type="text" placeholder="Email" id="sender-email" />
+        </div>
 
-            <div class="row1">
-                <i class="uil uil-lock icon"></i>
-                <input type="password" placeholder="Password">  
-            </div>
+        <div class="row1">
+          <i class="uil uil-lock icon"></i>
+          <input type="password" placeholder="Password" id="password" />
+        </div>
 
-            <div class="check">
-                <div class="item">
-                   <input type="checkbox" id="box">
-                   <label for="box">Remember me</label>
-                   <a href="">Forgot password?</a>
-                </div>
-            </div>
+        <div class="check">
+          <div class="item">
+            <input type="checkbox" id="box" />
+            <label for="box">Remember me</label>
+            <a href="#" id="reset-btn">Forgot password?</a>
+          </div>
+        </div>
 
-            <div class="but">
-                <button>Login</button>
-            </div>
+        <div class="but">
+          <button type="submit">Login</button>
+        </div>
+      </form>
 
-            <div class="pa">
-                <span class="">Not a member?
-                <a href="/project/regi.html">Register</a>
-                </span>
-            </div>
-        </div> 
+      <div class="pa">
+        <span>Not a member? <a href="./regi.html">Register</a></span>
+      </div>
     </div>
+  </div>
+
+  <script>
+    function isvalidEmail(email) {
+      return email.endsWith(".in") || email.endsWith(".org");
+    }
+
+    const cheakrout = (event) => {
+      event.preventDefault();
+      loginEmployer(event);
+    };
+
+    async function loginEmployer(event) {
+      event.preventDefault();
+      const email = document.getElementById("sender-email").value;
+      const password = document.getElementById("password").value;
+
+      if (!email || !password) {
+        alert("All fields are required!");
+        return;
+      }
+
+      try {
+        const res = await fetch("http://localhost:3000/auth/login-employer", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+        });
+
+        const result = await res.json();
+        localStorage.setItem("Email", email);
+
+        if (res.ok) {
+          localStorage.setItem("token", result.token);
+          if (result.role === "seeker") {
+            alert("Login Successfully");
+            return;
+          }
+          alert("An OTP has been sent to your email");
+          window.location.href = "otp.html";
+        } else {
+          alert(`Error: ${result.message || "Login failed"}`);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Something went wrong. Please try again.");
+      }
+    }
+
+    const resetpassword = async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("sender-email").value;
+
+      if (!email) {
+        alert("Please enter your email to reset password.");
+        return;
+      }
+
+      try {
+        const res = await fetch("http://localhost:3000/auth/forgot-password", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          alert(data.message || "Password reset link sent successfully.");
+        } else {
+          alert(data.message || "Something went wrong. Please try again.");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("An error occurred while sending the request.");
+      }
+    };
+
+    document.getElementById("login-form").addEventListener("submit", cheakrout);
+    document.getElementById("reset-btn").addEventListener("click", resetpassword);
+  </script>
 </body>
 </html>

@@ -12,7 +12,7 @@ router.post('/resend-otp', resendOTP);
 router.post('/forgot-password', forgotPassword);
 router.post('/reset-password/:token', resetPassword);
 router.get('/reset-password/:token', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/resetPage.html'));
+  res.redirect(`/major/resetPage.html?token=${req.params.token}`);
   
   });
 module.exports = router; 

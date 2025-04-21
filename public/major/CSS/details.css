@@ -1,0 +1,199 @@
+
+@import url('https://fonts.googlepis.com/css2?famaliy=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+
+* {
+    box-sizing: border-box;
+     font-family: 'Poppins', sans-serif; 
+}
+
+  body{
+    padding: 0;
+    margin: 0; 
+    line-height: none !important;
+    background-color: #f1f0f0;
+   }
+
+  #img-slider {
+   width: 70%;
+   height: 350px;
+   position: relative;
+   overflow: hidden;
+   margin: auto;
+   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+   border-radius: 15px;
+}
+
+/* Style the individual slides */
+.mySlides {
+   display: none;
+   position: absolute;
+   width: 100%;
+   height: 100%;
+}
+
+/* Style the images within the slides */
+.mySlides img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+}
+
+#description{
+   /* border:1px solid sandybrown; */
+   width: 80%;
+   margin: auto;
+   margin-top: 50px;
+   /* height: 300px; */
+   display: flex;
+   justify-content: space-between;
+}
+
+#card-description{
+   /* border:1px solid black; */
+   /* height: 250px; */
+   width: 53%;
+}
+
+#card-price-details{
+   /* border:1px solid red; */
+   /* height: 250px; */
+   width: 45%;
+   
+}
+#pricecard{
+   background-color: #f2eeee;
+}
+
+#icondiv{
+  display: grid;
+  margin: 1em 0;
+  grid-template-columns: repeat(2, minmax(0, 2fr));
+  justify-content: space-between;
+  gap:10px;
+}
+
+#card-price-details > #pricecard{
+box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+position: sticky;
+padding: 1em 1.5em;
+margin: 1em 1.5em;
+border-radius: 1em;
+
+}
+#card-price-details > #pricecard p{
+color: rgb(88, 83, 86);
+
+}
+
+#pricecard > p{
+  margin: 1em 0;
+  word-wrap: break-word;
+  
+}
+
+#pricecard #priceshow{
+font-weight: bolder;
+font-size: 1.5em;
+}
+
+#booknow{
+background-color: #5c5c5c;
+color: white;
+border-radius: 1em;
+padding: .5em 1em;
+margin: 1em 0;
+border: none;
+cursor: pointer;
+width: 100%;
+}
+#booknow:hover{
+background-color: #fff;
+border: 1px solid #dfdfdf;
+color: #000000;
+}
+
+
+.CardDetails > summary {
+list-style: none;
+cursor: pointer;
+font-size: large;
+}
+.CardDetails > ul{
+padding: 1em;
+
+}
+
+.details-card p{
+margin: 1em 0;
+word-wrap: break-word;
+font-size: larger;
+color: rgb(88, 83, 86);
+}
+.details-card h1 {
+color: rgb(88, 83, 86);
+}
+
+.details-card h2 {
+color: rgb(88, 83, 86);
+}
+
+#staticdescr li{
+margin-top: 8px;
+}
+
+#staticdescr{
+margin-top: 90px;
+}
+
+#staticdescr li{
+font-size: 15px;
+color: rgb(88, 83, 86);
+}
+
+#staticdescr h3{
+color: rgb(67, 64, 66);
+}
+
+
+
+@media screen and (max-width: 768px) {
+    #img-slider {
+      width: 90%;
+      height: 250px;
+    }
+  
+    #description {
+      flex-direction: column;
+    }
+  
+    #card-description {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  
+    #card-price-details {
+      width: 100%;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    #img-slider {
+      width: 100%;
+      height: 200px;
+    }
+  
+    #description {
+      flex-direction: column;
+      margin-top: 30px;
+    }
+  
+    #card-description,
+    #card-price-details {
+      width: 100%;
+    }
+  
+    #pricecard {
+      margin: 1em 0;
+    }
+  }

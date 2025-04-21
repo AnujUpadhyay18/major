@@ -1,26 +1,158 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<!DOCTYPE html>
+<!-- saved from url=(0058)./packages.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="apple-touch-icon" sizes="180x180" href="./IMAGES/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./IMAGES/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./IMAGES/favicon-16x16.png">
     <link rel="manifest" href="./IMAGES/site.webmanifest">
     <title>Packages</title>
-    <link rel="stylesheet" href="./packages.css">
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
-    integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./CSS/packages.css">
+    <script src="./packages_files/jquery-3.6.4.min.js.download" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script>
         $(function () {
-            $("#header").load("/header/pages.html");         
-            $("#footer").load("/footer/footer.html");
+            $("#header").load("user_header.html");         
+            $("#footer").load("user_footer.html");
     
         });
     </script>
 </head>
   
 <body>
-    <header id="header"></header>
+    <header id="header"><style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+
+    #main {
+        color: #359381;
+        font-family: 'Poppins', sans-serif;
+       
+    }
+
+    #main {
+        padding: 1em;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: whitesmoke;
+    }
+
+    #logodiv > h1{
+    
+        margin-top: 0px;
+    }
+
+  #cname{
+    font-family: 'Pacifico', cursive;
+    cursor: pointer;
+  }
+  #cname > a{
+    text-decoration: none;
+    color: #000000;
+    font-family: 'Pacifico', cursive;
+  }
+
+   
+    #navdiv>#headernav>a {
+        text-decoration: none;
+        font-weight: bold;
+        margin: 0 .5em;
+        padding: 0.5em;
+        border-radius: 1em;
+        color: #343535;
+
+    }
+
+
+    #navdiv>#headernav>a:hover {
+        background-color:#7f8685;;
+        color: #fff;
+    }
+
+
+    /* Responsive Media Query */
+
+    @media only screen  and (max-width: 1024px) and (min-width:768px)  {
+        #main {
+            flex-direction: column ;
+            font-size: larger;
+        }
+
+        #headernav{
+            margin:10px auto;
+            text-align: center;
+        }
+
+       
+    }
+
+    @media only screen and (max-width:768px)  and (min-width: 425px) {
+        #main {
+            flex-direction: column ;
+        }
+        #headernav{
+            margin:10px auto;
+            text-align: center;
+        }
+       
+    }
+
+    @media only screen and (max-width:425px)  and (min-width: 300px) {
+        #main {
+            flex-direction: column;
+        }
+        #headernav{
+            margin:10px auto;
+            text-align: center;
+        }
+    }
+
+
+   
+</style>
+<header id="main">
+    <div id="logodiv">
+        <h1 id="cname"><a href="/">Travelo</a></h1>
+       
+    </div>
+    <div id="navdiv">
+      
+        <nav id="headernav"> <a href="/index.html">Home</a>
+            <a href="./destination.html">Destination</a>
+            <a href="./activities.html">Activities</a>
+            <a href="./packages.html">Packages</a>
+            <a href="./index.html#aboutsec">AboutUs</a>
+            <a href="./profile.html">Profile</a></nav>
+    </div>
+  
+</header>
+<script>
+    let div = document.querySelector("#headernav");
+    let user = JSON.parse(localStorage.getItem('user')) || [];
+
+   if(user.length == 0){
+    div.innerHTML = ` <a href="index.html">Home</a>
+            <a href="destination.html">Destination</a>
+            <a href="activities.html">Activities</a>
+            <a href="packages.html">Packages</a>
+            <a href="index.html#aboutsec">AboutUs</a>
+            <a href="login.html">Login</a>`;
+   }else{
+    div.innerHTML = ` <a href="index.html">Home</a>
+            <a href="destination.html">Destination</a>
+            <a href="activities.html">Activities</a>
+            <a href="packages.html">Packages</a>
+            <a href="index.html#aboutsec">AboutUs</a>
+            <a href="profile.html">Profile</a>`;
+   }
+
+function myFunction(x) {
+  x.classList.toggle("change");
+  $("#mobile-menu").toggleClass("menu-hidden", 800, "easeOutQuint");
+};
+
+</script></header>
 
     <section id="searchbar">
         <input class="input" id="search" name="text" placeholder="Search..." type="search">
@@ -31,7 +163,7 @@
         <div id="left">
 
             <div id="sortingdata">
-                <p class="sort-by" >Sort By</p>
+                <p class="sort-by">Sort By</p>
                 <select name="sorting" id="sorting">
                     <option value="">Price</option>
                     <option value="asc">Low To High</option>
@@ -94,13 +226,143 @@
 
         </div>
 
-        <div id="destination-content">
-
-        </div>
+        <div id="destination-content"><div class="destination-card-list"><div class="destination-card" id="1"><div class="destination-img-card"><img class="destination-img" src="./packages_files/padma-resort-ubud.jpg" alt="Pic"></div><div class="destination-card-body"><div class="destination-duration-price" style="display: flex; justify-content: space-between;"><p class="destination-plan">6 Nights / 7 Days</p><p class="destination-price">₹30000</p></div><h2 class="destination-title">Wonderful Indonesia,Bali Family Holiday Package for 6 Nights</h2><p class="destination-name">Indonesia</p><p class="destination-location">Ubud (3N) → Seminyak (3N)</p><div class="destination-card-button" style="display: flex; margin-top: 10px; justify-content: space-between;"><button class="destination-button">Add To Card</button><button class="destination-button">View Details</button></div></div></div><div class="destination-card" id="2"><div class="destination-img-card"><img class="destination-img" src="./packages_files/gettyimages-1136368901-612x612.jpg" alt="Pic"></div><div class="destination-card-body"><div class="destination-duration-price" style="display: flex; justify-content: space-between;"><p class="destination-plan">4 Nights / 5 Days</p><p class="destination-price">₹15000</p></div><h2 class="destination-title">Family Tour Package of Yogyakarta</h2><p class="destination-name">Indonesia</p><p class="destination-location">Yogyakarta (4N)</p><div class="destination-card-button" style="display: flex; margin-top: 10px; justify-content: space-between;"><button class="destination-button">Add To Card</button><button class="destination-button">View Details</button></div></div></div><div class="destination-card" id="3"><div class="destination-img-card"><img class="destination-img" src="./packages_files/photo-1650509009946-32b00cb21a0a" alt="Pic"></div><div class="destination-card-body"><div class="destination-duration-price" style="display: flex; justify-content: space-between;"><p class="destination-plan">5 Nights / 6 Days</p><p class="destination-price">₹21000</p></div><h2 class="destination-title">Raja Ampat Islands Package - on coral reefs</h2><p class="destination-name">Indonesia</p><p class="destination-location">Sorong (1N) → Waisai (4N)</p><div class="destination-card-button" style="display: flex; margin-top: 10px; justify-content: space-between;"><button class="destination-button">Add To Card</button><button class="destination-button">View Details</button></div></div></div><div class="destination-card" id="4"><div class="destination-img-card"><img class="destination-img" src="./packages_files/gettyimages-1177992959-612x612.jpg" alt="Pic"></div><div class="destination-card-body"><div class="destination-duration-price" style="display: flex; justify-content: space-between;"><p class="destination-plan">3 Nights / 4 Days</p><p class="destination-price">₹15500</p></div><h2 class="destination-title">Komodo National Park Tour Package</h2><p class="destination-name">Indonesia</p><p class="destination-location">Labuan Bajo (1N) → Komodo Island (2N)</p><div class="destination-card-button" style="display: flex; margin-top: 10px; justify-content: space-between;"><button class="destination-button">Add To Card</button><button class="destination-button">View Details</button></div></div></div></div></div>
     </div>
-    <div id="pagination-buttons"></div>
-    <footer id="footer"></footer>
-</body>
-  <script src="./packages.js"></script>
+    <div id="pagination-buttons"><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button></div>
+    <footer id="footer"><style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+    /* *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    } */
+    #Userfooter_section{
+        font-family: 'Poppins', sans-serif;
+        display: flex;
+        padding: 2em;  
+       justify-content: space-between;   
+       background-color: whitesmoke;
+    }
   
-</html>
+    #footerLogo > h1{
+        font-family: 'Pacifico', cursive;
+      color: #7f8685;
+      font-size: 30px;
+        margin : 0.5em 0;
+    }
+
+   
+
+
+    /* user_second_div */
+    #user_second_div{
+        padding: 0 1em;
+    }
+    #user_second_div ul{
+        list-style: none;
+        list-style-type: none;
+        padding: 0 0.5em;
+        margin: 1em 0;
+        line-height: 2em;
+       
+
+    }
+    #user_second_div ul a{
+        text-decoration: none;
+        color: #000;
+    }
+    #user_second_div ul a:hover{
+        text-decoration: underline;
+        color: #000;
+    }
+
+
+    /* third */
+    #user_icon_div{
+        margin:1em 0;   
+    }
+    #user_icon_div  img{
+        margin: 0.3em;
+        cursor: pointer;
+    }
+
+    /* four_div */
+    #four_div h3{
+        margin-bottom: 1em;
+    }
+    #four_div input,#four_div button{
+        padding: 15px;
+        border: none;
+        outline: none;
+        border-radius: 1em;
+    }
+    button{
+        margin-top: 30px;
+        color: #fff;
+        cursor: pointer;
+        background-color: #7f8685;
+    }
+    @media screen and (max-width: 425px) and (min-width:300px) {
+        #Userfooter_section{
+            flex-direction: column;
+
+        }
+        #Userfooter_section > div{
+            margin-top: 2em;
+        }
+    }
+</style>
+<footer>
+    <section id="Userfooter_section">
+        <div id="first_div">
+            <div id="footerLogo">  
+                <h1>Travelo</h1>
+            </div>
+            <p>Discover your next holiday destination</p>
+        </div>
+        <div id="user_second_div">
+            <h3>Explore Travelo</h3>
+            <ul>
+                <li><a href="./">Home</a></li>
+                <li><a href="./destination">Destination</a></li>
+                <li><a href="./activities">Activities</a></li>
+                <li><a href="./packages">Packages</a></li>
+                <li><a href="./developerspage">Developer</a></li>
+            </ul>
+        </div>
+        <div id="third_div">
+            <h3>Connect with us</h3>
+            <div id="user_icon_div">
+              <!-- Facebook PNG (48×48) -->
+<img
+src="https://img.icons8.com/color/48/000000/facebook-new.png"
+width="40"
+alt="Facebook Icon"
+/>
+<!-- Instagram PNG (48×48) -->
+<img
+src="https://img.icons8.com/color/48/000000/instagram-new.png"
+width="40"
+alt="Instagram Icon"
+/>
+<!-- Twitter PNG (48×48) -->
+<img
+src="https://img.icons8.com/color/48/000000/twitter--v1.png"
+width="40"
+alt="Twitter Icon"
+/>
+
+            </div>
+        </div>
+        <div id="four_div">
+            <h3>Newsletter</h3>
+            <input type="email" name="email" placeholder="Your Email"> <br>
+            <button>Subscribe</button>
+        </div>
+    </section>
+</footer>
+<script></script></footer>
+
+  <script src="./Scripts/packages.js"></script>
+  
+</body></html>

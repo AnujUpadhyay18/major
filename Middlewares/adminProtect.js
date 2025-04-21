@@ -6,7 +6,7 @@ const adminProtect = async (req, res, next) => {
     const token = req.cookies.token; // only admins get tokens in cookies
 
     if (!token) {
-      return res.status(401).json({ message: 'No token, authorization denied' });
+      return res.redirect('http://localhost:3000/major/login.html');
     }
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);

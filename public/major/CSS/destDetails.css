@@ -1,0 +1,237 @@
+@import url('https://fonts.googlepis.com/css2?famaliy=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+#header {
+  position: static;
+  background-color: whitesmoke;
+}
+
+#destDetail {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 8%;
+  margin-top: 20px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.destcard {
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+width: 90%;
+margin-bottom: 30px;
+border: 1px solid #ddd;
+box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+padding: 20px;
+margin: 0 auto;
+transition: all 0.3s ease;
+position: relative;
+z-index: 1;
+text-align: justify;
+}
+
+
+.destcard:hover {
+transform: translateY(-5px) scale(1.03);
+box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+z-index: 2;
+}
+
+.destcard:hover img {
+border-radius: 0;
+}
+
+.destcard .dest-card-title {
+margin-top: 0;
+font-size: 20px;
+font-weight: bold;
+padding:0;
+padding-bottom:0.5px;
+background-color:whitesmoke;
+color: #000000;
+text-align: center;
+white-space: normal;
+word-wrap: break-word;
+}
+
+.destcard .dest-duration {
+text-align: center;
+font-weight: bold;
+padding: 10px;
+}
+.destcard img {
+width: 100%;
+height: 300px;
+object-fit: cover;
+position: relative;
+border-radius: 10px;
+transition: all 0.3s ease;
+}
+
+.destcard img::before {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+}
+
+
+.destcard .dest-card-price {
+display: block;
+margin-top: 10px;
+font-weight: bold;
+}
+
+.destcard .dest-card-tour-list {
+  margin-top: 10px;
+}
+
+.destcard .dest-card-tour-list li {
+  margin-bottom: 5px;
+}
+
+.destcard button {
+width: 130px;
+height: 40px;
+font-size: 1.1em;
+cursor: pointer;
+background-color:#7f8685;
+color: #fff;
+border: none;
+border-radius: 5px;
+transition: all .4s;
+align-self: center;
+}
+
+.destcard button:hover {
+border-radius: 5px;
+transform: translateY(-10px);
+box-shadow: 0 7px 0 -2px #7f8685,
+0 15px 0 -4px #585c5b,
+0 16px 10px -3px #4e5251;
+}
+
+.destcard button:active {
+transition: all 0.2s;
+transform: translateY(-5px);
+box-shadow: 0 2px 0 -2px #7f8685,
+0 8px 0 -4px #585c5b,
+0 12px 10px -3px #4e5251;
+}
+#destDetail {
+ display: grid;
+ grid-template-columns: repeat(2, 1fr);
+ gap: 20px;
+ padding: 8%;
+ margin-top: 20px;
+ padding-bottom: 20px;
+ padding-top: 20px;
+}
+
+#destHeading {
+font-size: 36px;
+font-weight: bold;
+text-align: center;
+margin-top: 40px;
+margin-bottom: 20px;
+text-transform: capitalize;
+color: #222;
+animation-name: bounceIn;
+animation-duration: 1s;
+animation-fill-mode: both;
+transition: opacity 0.3s ease-in-out;
+}
+@keyframes bounceIn {
+  from,
+  20%,
+  40%,
+  60%,
+  80%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  0% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  20% {
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+  40% {
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+  60% {
+    opacity: 1;
+    transform: scale3d(1.03, 1.03, 1.03);
+  }
+  80% {
+    transform: scale3d(0.97, 0.97, 0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+#destHeading span {
+  color: #5e5e5e;
+}
+
+
+/* Media queries for different screen sizes */
+
+
+@media only screen and (max-width: 768px) {
+  #destDetail {
+      grid-template-columns: 1fr;
+      padding: 5%;
+  }
+
+  .destcard {
+      margin-bottom: 10px;
+  }
+
+  #destHeading {
+      font-size: 36px;
+  }
+}
+
+
+@media only screen and (max-width: 480px) {
+  .destcard {
+      padding: 10px;
+  }
+
+  .destcard img {
+      height: 200px;
+  }
+  
+  .destcard .dest-card-title {
+      font-size: 18px;
+  }
+
+  #destHeading {
+      font-size: 26px;
+  }
+}
+
+
+@media only screen and (max-width: 320px) {
+  .destcard .dest-card-title {
+      font-size: 16px;
+  }
+
+  #destHeading {
+      font-size: 16px;
+  }
+}

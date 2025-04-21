@@ -1,0 +1,398 @@
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+
+
+#boxes {
+    display: flex;
+
+}
+
+#boxes>div {
+    width: fit-content;
+    height: fit-content;
+    background-color: #1b2c39;
+    margin: 10px;
+    border-radius: 50px;
+    display: flex;
+    padding: 25px 50px 0px;
+    font-size: larger;
+    font-weight: bold;
+    color: white;
+
+}
+
+#boxes>div img {
+    width: 25vh;
+}
+
+#boxes>div h4 {
+    color: rgb(219, 219, 219);
+}
+
+.fa-bars {
+    padding: 10px;
+    color: white;
+}
+
+
+
+/* data */
+#packages_data,
+#users_data,
+#sales_data,
+#admin_data {
+    margin: 3em 1.5em;
+}
+
+#heading_packages,
+#heading_users,
+#heading_sales,
+#heading_admin {
+    margin: 1.5em 0;
+}
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px auto;
+    text-align: center;
+    font-size: large;
+    width: 100%;
+
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table th {
+    text-align: center;
+    padding: 20px;
+}
+
+.styled-table thead tr {
+    background-color: #808080;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #7cbba8;
+}
+
+/* .styled-table tbody tr.active-row {
+font-weight: bold;
+color: #7cbba8;
+} */
+
+/* button style */
+
+.edit_button button {
+    font-family: inherit;
+    background: rgb(155, 161, 123);
+    color: white;
+    padding: 0.7em 1em;
+    cursor: pointer;
+    margin: auto;
+    padding-left: 0.9em;
+    display: flex;
+    font-size: large;
+    font-family: 'Poppins', sans-serif;
+    align-items: center;
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.2s;
+}
+
+.edit_button button span {
+    display: block;
+    margin-left: 0.3em;
+    transition: all 0.3s ease-in-out;
+}
+
+.edit_button button svg {
+    display: block;
+    transform-origin: center center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.edit_button button:hover .svg-wrapper {
+    animation: fly-1 0.6s ease-in-out infinite alternate;
+}
+
+.edit_button button:hover svg {
+    transform: translateX(1.2em) rotate(45deg) scale(1.1);
+}
+
+.edit_button button:hover span {
+    transform: translateX(5em);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+@keyframes fly-1 {
+    from {
+        transform: translateY(0.1em);
+    }
+
+    to {
+        transform: translateY(-0.1em);
+    }
+}
+
+.delete_button button {
+    width: 150px;
+    height: 50px;
+    margin: auto;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background: red;
+    border: none;
+    border-radius: 16px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+    background: #e62222;
+}
+
+.delete_button button,
+.delete_button button span {
+    transition: 200ms;
+}
+
+.delete_button button .text {
+    transform: translateX(35px);
+    color: white;
+    font-weight: bold;
+}
+
+.delete_button button .icon {
+    position: absolute;
+    border-left: 1px solid #c41b1b;
+    transform: translateX(110px);
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete_button button svg {
+    width: 15px;
+    fill: #eee;
+}
+
+.delete_button button:hover {
+    background: #ff3636;
+}
+
+.delete_button button:hover .text {
+    color: transparent;
+}
+
+.delete_button button:hover .icon {
+    width: 150px;
+    border-left: none;
+    transform: translateX(0);
+}
+
+.delete_button button:focus {
+    outline: none;
+}
+
+.delete_button button:active .icon svg {
+    transform: scale(0.8);
+}
+
+
+/* optionsdata */
+.optionsdata {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* searchbar */
+#searchbar {
+    width: 100%;
+    margin: auto;
+}
+
+#searchbar input,
+select {
+    width: auto;
+    margin: .3rem;
+    background-color: #1b2c39;
+    color: #fff;
+    padding: .45rem 1rem;
+    min-height: 40px;
+    border-radius: 4px;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    border: none;
+    line-height: 1.15;
+    box-shadow: 0px 10px 20px -18px;
+}
+
+#searchbar input::placeholder,
+select::placeholder {
+    color: #fff;
+}
+
+#searchbar input:focus,
+select:focus {
+    border-bottom: 2px solid #7cbba8;
+    border-radius: 4px 4px 2px 2px;
+}
+
+#searchbar input:hover,
+select:hover {
+    outline: 1px solid lightgrey;
+}
+
+
+
+#searchbar select {
+    padding: .15rem .5rem;
+}
+
+
+/* add new */
+#newdata {
+    width: 100%;
+}
+
+.cta {
+    position: relative;
+    margin: auto;
+    padding: 12px 18px;
+    transition: all 0.2s ease;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.cta:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    border-radius: 50px;
+    background: #b1dae7;
+    width: 45px;
+    height: 45px;
+    transition: all 0.3s ease;
+}
+
+.cta span {
+    position: relative;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #234567;
+}
+
+.cta svg {
+    position: relative;
+    top: 0;
+    margin-left: 10px;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: #939394;
+    stroke-width: 2;
+    transform: translateX(-5px);
+    transition: all 0.3s ease;
+}
+
+.cta:hover:before {
+    width: 100%;
+    background: #b4b5b6;
+}
+
+.cta:hover svg {
+    transform: translateX(0);
+}
+
+.cta:active {
+    transform: scale(0.95);
+}
+
+
+/* fix button */
+.gotop {
+    background-color: #757777;
+    /* padding: 10px 20px; */
+    font-size: 30px;
+    padding-top: 7px;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    color: #fff;
+    font-weight: bolder;
+
+}
+
+#mybutton {
+    border-radius: 1em;
+
+    position: fixed;
+    bottom: 1.5em;
+    right: 2em;
+
+}
+
+/* media */
+@media only screen and (max-width: 1044px) and (min-width: 781px) {
+    #boxes>div {
+        flex-wrap: wrap;
+    }
+
+    .optionsdata {
+        flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 780px) {
+
+    #boxes>div,
+    #boxes {
+        flex-wrap: wrap;
+    }
+
+    #main h1 {
+        font-size: 7vw;
+    }
+
+    .optionsdata {
+        flex-direction: column;
+    }
+}

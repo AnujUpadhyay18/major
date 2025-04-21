@@ -160,9 +160,9 @@
             return;
         }
 
-        // ✅ Extract the token from the URL
-        const token = window.location.pathname.split("/").pop();
-
+        const params = new URLSearchParams(window.location.search);
+        const token = params.get("token");
+        
         try {
             const res = await fetch(`http://localhost:3000/auth/reset-password/${token}`, {
                 method: "POST",
@@ -174,7 +174,7 @@
 
             if (res.ok) {
                 alert("Password changed successfully.");
-               // window.location.href = "Login.html"; 
+                window.location.href = "Login.html"; 
             } else {
                 alert(`Error: ${result.message || "Password reset failed"}`);
             }

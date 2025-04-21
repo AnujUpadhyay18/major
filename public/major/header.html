@@ -156,10 +156,12 @@
             </div>
     
     
-            <div class="sub_container">
-                <a href="/major/login.html" class="header_link">Login</a>
-    
+            <div class="sub_container" id="auth-links">
+                <!-- Login or Logout link will be injected here -->
             </div>
+            
+           
+            
         </div>
     </div>
     <button class="menu" >
@@ -181,6 +183,23 @@
     
 
   </script>
-
-
+  
+  <script>
+    const authLinksDiv = document.getElementById('auth-links');
+  
+    if (localStorage.getItem('token')) {
+      authLinksDiv.innerHTML = `<a href="/major/login.html" class="header_link" id='logout'>Logout</a>`;
+    } else {
+      authLinksDiv.innerHTML = `<a href="/major/login.html" class="header_link">Login</a>`;
+    }
+  
+    // Attach event listener only if logout button exists
+    const logoutBtn = document.getElementById('logout');
+    logoutBtn.addEventListener('click', () => {
+        localStorage.removeItem("token");
+        window.location.href = "/logout"; 
+      });
+      
+  </script>
+  
 </body>

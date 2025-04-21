@@ -1,7 +1,5 @@
 
-
-
-const destURL = "https://vouge-pocket-hogf.onrender.com/packages";
+const destURL = "http://localhost:3000/package";
 
 // Append div to main section
 let mainSection = document.getElementById("destinations");
@@ -76,6 +74,8 @@ function stateCardCreate(state, items, description){
         index++;
     });
 
+    let url="http://localhost:3000/major/destdetails.html?state";
+
     carouselDiv.append(indicatorsDiv, imagesDiv);
     card.append(carouselDiv);
     let readMoreBtn = document.createElement("button");
@@ -84,7 +84,7 @@ function stateCardCreate(state, items, description){
 
     readMoreBtn.addEventListener("click", function(){
         let state = h3.textContent;
-        window.location.href = "./destDetails.html?state=" + state;
+        window.location.href = `${url}=${state}`;
     });
     card.append(readMoreBtn);
 

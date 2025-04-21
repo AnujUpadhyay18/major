@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> Travel Assistant</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center px-4">
+  <div class="bg-white shadow-xl rounded-2xl w-full max-w-2xl p-6 space-y-6">
+    <h1 class="text-2xl font-semibold text-center text-blue-600">🌍 Travel Assistant </h1>
+
+    <div class="space-y-4">
+      <label for="question" class="block text-sm font-medium text-gray-700">Ask about a tour package:</label>
+      <input
+        id="question"
+        type="text"
+        placeholder="e.g. What’s the itinerary for Bali?"
+        class="w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400"
+      />
+      <button
+        onclick="askGemini()"
+        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-xl transition"
+      >
+        Ask Assistant
+      </button>
+    </div>
+
+    <div id="response" class="bg-gray-50 p-4 rounded-xl text-gray-800 whitespace-pre-wrap border border-gray-200 min-h-[100px]">
+      Assistant response will appear here.
+    </div>
+  </div>
+
+  <script>
+    const GEMINI_API_KEY = 'AIzaSyBHKq6zjo4E_LGBOcjhp_rJObuUfpPZKm4';
+
+    async function askGemini() {
+      const question = document.getElementById('question').value;
+      const responseBox = document.getElementById('response');
+
+      try {
+        // Step 1: Fetch tour packages from your API
+        const res = await fetch('https://vouge-pocket-hogf.onrender.com/packages');
+        const data = await res.json();
+
+        const limitedData = data.slice(0, 5); // Take only 5 to fit token limits
+
+        // Step 2: Format into prompt
+        const formatted = data.map(pkg => {
+          const tour = pkg.tour.map(d => `${d.title}: ${d.description}`).join('\n');
+          return `
+Title: ${pkg.title}
+Destination: ${pkg.destination}
+Duration: ${pkg.duration}
+Price: ₹${pkg.price}
+Summary: ${pkg.description.join(' ')}
+Itinerary:
+${tour}
+          `;
+        }).join('\n\n');
+
+        const prompt = `
+You are a travel assistant. ONLY use the tour package info below to answer.
+
+Packages:
+${formatted}
+
+User Question: ${question}
+        `;
+
+        // Step 3: Call Gemini API
+        const geminiRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyBHKq6zjo4E_LGBOcjhp_rJObuUfpPZKm4`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt }] }]
+          })
+        });
+
+        const geminiData = await geminiRes.json();
+        const answer = geminiData?.candidates?.[0]?.content?.parts?.[0]?.text;
+
+        responseBox.textContent = answer || "No response from Gemini.";
+      } catch (err) {
+        responseBox.textContent = "Error: " + err.message;
+      }
+    }
+  </script>
+</body>
+</html>

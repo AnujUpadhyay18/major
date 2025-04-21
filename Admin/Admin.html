@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f8fbff;
+      color: #333;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+
+    .sidebar {
+      width: 240px;
+      background: #ffffff;
+      border-right: 1px solid #ddd;
+      padding: 20px;
+    }
+
+    .sidebar h2 {
+      color: #00c4cc;
+      margin-bottom: 30px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      margin-bottom: 10px;
+      background-color: #eaf9fb;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .nav-item:hover {
+      background-color: #d2f4f7;
+    }
+
+    .main {
+      flex: 1;
+      padding: 30px;
+    }
+
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cards {
+      display: flex;
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      width: 200px;
+    }
+
+    .card h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: #777;
+    }
+
+    .card p {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .add-job-btn {
+      background-color: #00c4cc;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #00c4cc;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    .status {
+      background-color: #d4fbe3;
+      color: green;
+      padding: 4px 8px;
+      border-radius: 12px;
+      text-align: center;
+      display: inline-block;
+    }
+
+    .actions button {
+      background: none;
+      border: none;
+      margin-right: 8px;
+      cursor: pointer;
+    }
+
+    .screen {
+      display: none;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    #confirmModal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <h2>Admin Dashboard</h2>
+      <div class="nav-item" onclick="switchTab('dashboard')">🏠 Dashboard</div>
+      <div class="nav-item" onclick="switchTab('jobs')">🧰 Destination Management</div>
+      <div class="nav-item" onclick="switchTab('applications')">👥 Tourist</div>
+      <div class="nav-item" onclick="switchTab('employers')">🏢 Employers</div>
+      <div class="nav-item" onclick="switchTab('users')">👤 Users</div>
+    </div>
+    <div class="main">
+      <div id="dashboard" class="screen active">
+        <div class="dashboard-header">
+          <h1>Dashboard Overview</h1>
+          <button class="add-job-btn">+ Add Job</button>
+        </div>
+        <div class="cards">
+          <div class="card">
+            <h3>Total Jobs</h3>
+            <p id="totalJobs">0</p>
+          </div>
+          <div class="card">
+            <h3>Active Users</h3>
+            <p id="activeUsers">0</p>
+          </div>
+          <div class="card">
+            <h3>Applications</h3>
+            <p id="totalApplications">0</p>
+          </div>
+          <div class="card">
+            <h3>Revenue</h3>
+            <p>$398</p>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Job Title</th>
+              <th>Company</th>
+              <th>Applications</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="dashboardJobs"></tbody>
+        </table>
+      </div>
+
+      <div id="jobs" class="screen">
+        <h1>Job Management</h1>
+        <table id="jobTable"><thead><tr><th>ID</th><th>Title</th><th>Actions</th></tr></thead><tbody></tbody></table>
+      </div>
+
+      <div id="applications" class="screen">
+        <h1>Applicants</h1>
+        <table id="appTable"><thead><tr><th>ID</th><th>User</th><th>Job</th></tr></thead><tbody></tbody></table>
+      </div>
+
+      <div id="employers" class="screen">
+        <h1>Employers</h1>
+        <table id="employerTable"><thead><tr><th>ID</th><th>Email</th><th>Actions</th></tr></thead><tbody></tbody></table>
+      </div>
+
+      <div id="users" class="screen">
+        <h1>Users</h1>
+        <table id="userTable"><thead><tr><th>ID</th><th>Email</th><th>Actions</th></tr></thead><tbody></tbody></table>
+      </div>
+    </div>
+  </div>
+
+  <div id="confirmModal">
+    <div class="modal-content">
+      <p>Are you sure you want to delete this item?</p>
+      <button onclick="confirmDelete()">Yes</button>
+      <button onclick="closeModal()">No</button>
+    </div>
+  </div>
+
+  <script>
+    const API = 'http://localhost:3000/admin';
+    const token = localStorage.getItem('token');
+    let deleteURL = '';
+
+    function switchTab(tab) {
+      document.querySelectorAll('.screen').forEach(el => el.classList.remove('active'));
+      document.getElementById(tab).classList.add('active');
+      if (tab === 'users') loadUsers();
+      if (tab === 'employers') loadEmployers();
+      if (tab === 'jobs') loadJobs();
+      if (tab === 'applications') loadApplications();
+    }
+
+    function openModal(url) {
+      deleteURL = url;
+      document.getElementById('confirmModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('confirmModal').style.display = 'none';
+    }
+
+    async function confirmDelete() {
+      try {
+        await fetch(deleteURL, {
+          method: 'DELETE',
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        closeModal();
+        const activeTab = document.querySelector('.screen.active').id;
+        switchTab(activeTab);
+      } catch (err) {
+        alert('Error deleting');
+      }
+    }
+
+    async function loadUsers() {
+      const res = await fetch(`${API}/users`, { headers: { Authorization: `Bearer ${token}` } });
+      const data = await res.json();
+      const tbody = document.querySelector('#userTable tbody');
+      tbody.innerHTML = '';
+      data.forEach(user => {
+        tbody.innerHTML += `<tr><td>${user._id}</td><td>${user.email}</td><td><button onclick="openModal('${API}/user/${user._id}')">Delete</button></td></tr>`;
+      });
+      document.getElementById('activeUsers').textContent = data.length;
+    }
+
+    async function loadEmployers() {
+      const res = await fetch(`${API}/employers`, { headers: { Authorization: `Bearer ${token}` } });
+      const data = await res.json();
+      const tbody = document.querySelector('#employerTable tbody');
+      tbody.innerHTML = '';
+      data.forEach(emp => {
+        tbody.innerHTML += `<tr><td>${emp._id}</td><td>${emp.email}</td><td><button onclick="openModal('${API}/employer/${emp._id}')">Delete</button></td></tr>`;
+      });
+    }
+
+    async function loadJobs() {
+      const res = await fetch(`${API}/jobs`, { headers: { Authorization: `Bearer ${token}` } });
+      const data = await res.json();
+      const tbody = document.querySelector('#jobTable tbody');
+      const dashboardJobs = document.getElementById('dashboardJobs');
+      tbody.innerHTML = '';
+      dashboardJobs.innerHTML = '';
+      data.forEach(job => {
+        tbody.innerHTML += `<tr><td>${job._id}</td><td>${job.title}</td><td><button onclick="openModal('${API}/job/${job._id}')">Delete</button></td></tr>`;
+        dashboardJobs.innerHTML += `<tr><td>${job.title}</td><td>${job.company || ''}</td><td>${job.applicationCount || 0}</td><td><span class='status'>${job.status || 'active'}</span></td><td class='actions'>✏️ 🗑️</td></tr>`;
+      });
+      document.getElementById('totalJobs').textContent = data.length;
+    }
+
+    async function loadApplications() {
+      const res = await fetch(`${API}/applications`, { headers: { Authorization: `Bearer ${token}` } });
+      const data = await res.json();
+      const tbody = document.querySelector('#appTable tbody');
+      tbody.innerHTML = '';
+      data.forEach(app => {
+        tbody.innerHTML += `<tr><td>${app._id}</td><td>${app.user?.email || ''}</td><td>${app.job?.title || ''}</td></tr>`;
+      });
+      document.getElementById('totalApplications').textContent = data.length;
+    }
+
+    // Load initial dashboard values
+    loadJobs();
+    loadUsers();
+    loadApplications();
+  </script>
+</body>
+</html>

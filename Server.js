@@ -7,11 +7,10 @@ const userRouter=require('./Routes/user.route')
 const authRoute=require('./Routes/auth.route')
 const path =require('path')
 const cors=require('cors')
-const job= require('./Routes/job.route')
 const admin= require("./Routes/Admin.router")
 const cookieParser = require('cookie-parser')
 const employer= require('./Routes/employer.route')
-
+const packages=require('./Routes/Package')
 // middlewares 
 app.use(express.json())
 app.use(cookieParser())
@@ -25,16 +24,17 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/user',userRouter)
+app.use('/package',packages)
 app.use('/auth',authRoute)
-app.use('/job',job)
 app.use("/admin",admin)
+app.use(express.static(path.join(__dirname, 'Admin'))); 
 
 const fs = require('fs');
 const adminProtect = require("./Middlewares/adminProtect");
 const { employerProtect } = require("./Middlewares/authMiddleware");
 
-app.get('/public', adminProtect, (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'Admin.html'));
+app.get('/Admin', adminProtect, (req, res) => {
+  res.sendFile(path.join(__dirname, 'Admin', 'Admin.html'));
 });
 
 app.get('/noti',(req,res)=>{
@@ -43,15 +43,13 @@ app.get('/noti',(req,res)=>{
 
 
 app.get('/login', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'Login.html')); // assuming it's in 'frontend'
+  res.sendFile(path.join(__dirname, 'public', '/major/Login.html')); // assuming it's in 'frontend'
 });
  
 app.get('/dash', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'dashboard.html')); // assuming it's in 'frontend'
 });
-app.get('/job',(req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'postjob.html')); // assuming it's in 'frontend'
-});
+
  
 app.get('/otp', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'otp.html')); // adjust path if needed
@@ -83,9 +81,11 @@ app.get('/', (req, res) => {
 // });
 
 
-app.get("/",(req,res)=>{
-    res.send(" hey its running ")
-})
+// logout route on server
+app.get('/logout', (req, res) => {
+  res.clearCookie('token', { path: '/' }); // set path to match the one used in set-cookie
+  res.redirect('/major/login.html');
+});
 
 app.listen(process.env.PORT,()=>{
     console.log("App is running on 3000")

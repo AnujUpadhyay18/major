@@ -86,7 +86,7 @@
                <div> <p>Cotegory</p>
                 <h3>Flight booking</h3>
                </div>
-                <img src=" /major/Images//flight booking.gif" alt="img13">
+                <img src=" ./Images/flight booking.gif" alt="img13">
     
             </div>
     
@@ -94,12 +94,25 @@
                <div > <p>Cotegory</p>
                 <h3>accomodation</h3>
                </div>
-                <img src="/major/Images//accomodation.gif" alt="img14">
+                <img src="./Images/accomodation.gif" alt="img14">
     
             </div>
         </div>
     
     </div>
+    <!-- AI Assistant Icon -->
+<div class="ai-assistant-icon" title="AI Assistant">
+    🤖
+  </div>
+  
+  <!-- AI Assistant Modal -->
+  <div id="aiModal" class="ai-modal">
+    <div class="ai-modal-content">
+      <span class="ai-close">&times;</span>
+      <iframe src="/major/gemini.html" frameborder="0" width="100%" height="100%"></iframe>
+    </div>
+  </div>
+  
     <footer id="footer"></footer>
      <script>
         const Ele = document.querySelector('.men');
@@ -117,6 +130,27 @@ window.addEventListener('scroll',()=>{
         }
       
 })
+
      </script>
+     <script>
+        const aiIcon = document.querySelector('.ai-assistant-icon');
+        const aiModal = document.getElementById('aiModal');
+        const closeBtn = document.querySelector('.ai-close');
+      
+        aiIcon.addEventListener('click', () => {
+          aiModal.style.display = 'block';
+        });
+      
+        closeBtn.addEventListener('click', () => {
+          aiModal.style.display = 'none';
+        });
+      
+        window.addEventListener('click', (e) => {
+          if (e.target === aiModal) {
+            aiModal.style.display = 'none';
+          }
+        });
+      </script>
+      
 </body>
 </html>

@@ -5,59 +5,264 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register</title>
-  <link rel="stylesheet" href="regi.css">
+  <link rel="stylesheet" href="./CSS/regi.css">
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
-  <link rel="apple-touch-icon" sizes="180x180" href="./IMAGES/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="./IMAGES/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="./IMAGES/favicon-16x16.png">
-  <link rel="manifest" href="./IMAGES/site.webmanifest">
+  <style>
+    .tab-btns {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .tab-btns button {
+      padding: 10px 20px;
+      background-color: #898585;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .tab-btns button.active {
+      background-color: crimson;
+    }
+
+    .form-tab {
+      display: none;
+    }
+
+    .form-tab.active {
+      display: block;
+    }
+
+    form.bmain {
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      position: relative;
+    }
+
+    .inp_button {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .login_btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: crimson;
+      color: white;
+      cursor: pointer;
+    }
+
+    .login-signup {
+      text-align: center;
+      margin-top: 15px;
+    }
+  </style>
 </head>
 
 <body class="back">
-
   <div class="main">
-    <img src="regim1.jpg" width="450px" height="220px" alt="image not available">
-    <form class="bmain">
+    <img src="./Images/regim1.jpg" width="450px" height="220px" alt="image not available">
+
+    <div class="tab-btns">
+      <button id="userTab" class="active">Register as User</button>
+      <button id="employerTab">Register as Employer</button>
+    </div>
+
+    <!-- Register as User Section -->
+    <form class="bmain form-tab active" id="userForm">
       <div class="reg">
-        <span style=" text-decoration-line: underline;
-                      font-size: 30px;
-                     font-weight:bolder;
-                      position: relative;
-                      top: -10px;">Re</span>
-        <span class="spa">gister</span>
+        <span style="text-decoration-line: underline; font-size: 30px; font-weight:bolder; position: relative; top: -10px;">User</span>
+        <span class="spa"> Registration</span>
       </div>
 
       <div class="infild">
         <i class="uil uil-user"></i>
-        <input type="text" name="user" placeholder="Full Name" id="name_user">
+        <input type="text" name="user" placeholder="Full Name" id="user_name">
       </div>
 
       <div class="infild">
         <i class="uil uil-envelope icon"></i>
-        <input type="text" placeholder="Email" id="email">
+        <input type="text" placeholder="Email" id="user_email">
       </div>
 
       <div class="infild">
         <i class="uil uil-lock icon"></i>
-        <input type="password" placeholder="Password" id="password">
+        <input type="password" placeholder="Password" id="user_password">
       </div>
 
       <div class="infild">
         <i class="uil uil-lock icon"></i>
-        <input type="password" placeholder="Confirm Password" id="confpass">
+        <input type="password" placeholder="Confirm Password" id="user_confpass">
       </div>
 
       <div class="inp_button">
-        <input type="button" value="Register Now" id="register" class="login_btn">
+        <input type="button" value="Register as User" id="register_user" class="login_btn">
+      </div>
+      <div class="login-signup">
+        <span class="text1">Have an Account?
+          <a class='text' href="login.html">Login Now</a>
+        </span>
+      </div>
+    </form>
+
+    <!-- Register as Employer Section -->
+    <form class="bmain form-tab" id="employerForm">
+      <div class="reg">
+        <span style="text-decoration-line: underline; font-size: 30px; font-weight:bolder; position: relative; top: -10px;">Employer</span>
+        <span class="spa"> Registration</span>
+      </div>
+
+      <div class="infild">
+        <i class="uil uil-user"></i>
+        <input type="text" name="employer" placeholder="Full Name" id="emp_name">
+      </div>
+
+      <div class="infild">
+        <i class="uil uil-building"></i>
+        <input type="text" placeholder="Company Name" id="emp_company">
+      </div>
+
+      <div class="infild">
+        <i class="uil uil-envelope icon"></i>
+        <input type="email" placeholder="Email" id="emp_email">
+      </div>
+
+      <div class="infild">
+        <i class="uil uil-lock icon"></i>
+        <input type="password" placeholder="Password" id="emp_password">
+      </div>
+
+      <div class="infild">
+        <i class="uil uil-lock icon"></i>
+        <input type="password" placeholder="Confirm Password" id="emp_confpass">
+      </div>
+
+      <div class="inp_button">
+        <input type="button" value="Register as Employer" id="register_employer" class="login_btn">
       </div>
 
       <div class="login-signup">
         <span class="text1">Have an Account?
-          <a class='text' href="/project/login.html">Login Now</a>
+          <a class='text' href="login.html">Login Now</a>
         </span>
       </div>
     </form>
   </div>
+
+  <script>
+    const userTab = document.getElementById('userTab');
+    const employerTab = document.getElementById('employerTab');
+    const userForm = document.getElementById('userForm');
+    const employerForm = document.getElementById('employerForm');
+
+    userTab.addEventListener('click', () => {
+      userForm.classList.add('active');
+      employerForm.classList.remove('active');
+      userTab.classList.add('active');
+      employerTab.classList.remove('active');
+    });
+
+    employerTab.addEventListener('click', () => {
+      employerForm.classList.add('active');
+      userForm.classList.remove('active');
+      employerTab.classList.add('active');
+      userTab.classList.remove('active');
+    });
+  </script>
 </body>
+<script>
+  /*function isValidEmailDomain(email) {
+    return !(email.includes("gmail") || email.includes("yahoo") || email.includes("outlook"));
+  }*/
+
+  async function register(event) {
+    event.preventDefault();
+
+    let email = document.getElementById("emp_email").value;
+    let name = document.getElementById("emp_name").value;
+    let password = document.getElementById("emp_password").value;
+    let confirm_password = document.getElementById("emp_confpass").value;
+
+   if (!email || !name || !password || !confirm_password) {
+      alert("All fields are required!");
+      return;
+    }
+
+    if (password !== confirm_password) {
+      alert("Passwords do not match!");
+      return;
+    }
+
+    try {
+      const res = await fetch("http://localhost:3000/auth/register-employer", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, name, password })
+      });
+
+      const result = await res.json();
+      if (res.ok) {
+        localStorage.setItem("Email", email);
+        alert("An OTP has been sent to your email. Please verify.");
+        window.location.href = "http://localhost:3000/major/otp.html";
+      } else {
+        alert(`Error: ${result.message || "Registration failed"}`);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Something went wrong. Please try again.");
+    }
+  }
+
+  async function registerJobSeeker(event) {
+    event.preventDefault();
+
+    let email = document.getElementById("user_email").value;
+    let name = document.getElementById("user_name").value;
+    let password = document.getElementById("user_password").value;
+    let confirm_password = document.getElementById("user_confpass").value;
+
+    if (!email || !name || !password || !confirm_password) {
+      alert("All fields are required!");
+      return;
+    }
+
+    if (password !== confirm_password) {
+      alert("Passwords do not match!");
+      return;
+    }
+
+    try {
+      const res = await fetch("http://localhost:3000/auth/register-user", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, name, password })
+      });
+
+      const result = await res.json();
+      if (res.ok) {
+        alert(" Ragistraiton Succesfully  !!")
+      } else {
+        alert(`Error: ${result.message || "Registration failed"}`);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Something went wrong. Please try again.");
+    }
+  }
+
+  // Attach listeners after DOM is loaded
+  window.addEventListener('DOMContentLoaded', () => {
+    document.getElementById("register_user").addEventListener("click", registerJobSeeker);
+    document.getElementById("register_employer").addEventListener("click", register);
+  });
+</script>
 
 </html>

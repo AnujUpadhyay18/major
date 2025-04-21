@@ -189,7 +189,7 @@ const registerEmployer = async (req, res) => {
         
         return res.status(200).json({
           message: "Admin OTP verified successfully.",
-          redirectedurl: "http://localhost:3000/public/", 
+          redirectedurl: "http://localhost:3000/Admin/", 
         });
       }
   
@@ -241,6 +241,7 @@ const registerEmployer = async (req, res) => {
         const token = generateToken(parsed.id, parsed.role);
         return res.status(200).json({
           message: "Login successful",
+          redirectedurl:"http://localhost:3000/",
           token,
        
         });
@@ -262,8 +263,9 @@ const registerEmployer = async (req, res) => {
     console.log("Login attempt:", email);
   
     try {
-      // ✅ Check for Admin login
+      //  Check for Admin login
       if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASS) {
+   console.log(email)
         const otp = otpGenerator.generate(6, {
           digits: true,
           upperCaseAlphabets: false,
@@ -284,8 +286,9 @@ const registerEmployer = async (req, res) => {
         });
       }
   
-      // ✅ Check for Employer login
+      //  Check for Employer login
       const employer = await Employer.findOne({ email });
+    
       if (employer && await bcrypt.compare(password, employer.password)) {
         const otp = otpGenerator.generate(6, {
           digits: true,
@@ -312,8 +315,9 @@ const registerEmployer = async (req, res) => {
         });
       }
   
-      // ✅ Check for User login
+      //  Check for User login
       const user = await User.findOne({ email });
+      
       if (user && await bcrypt.compare(password, user.password)) {
         const token = generateToken(user._id, user.role);
   
@@ -324,7 +328,7 @@ const registerEmployer = async (req, res) => {
         });
       }
   
-      // ❌ If no match
+      //  If no match
       return res.status(401).json({ message: "Invalid credentials" });
   
     } catch (error) {
@@ -384,7 +388,7 @@ const resendOTP = async (req, res) => {
  const resetPassword = async (req, res) => {
   const { token } = req.params;
   const { newPassword } = req.body;
-
+ 
   const user = await User.findOne({
     resetToken: token,
     resetTokenExpires: { $gt: Date.now() }
