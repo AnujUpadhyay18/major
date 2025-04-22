@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="apple-touch-icon" sizes="180x180" href="./IMAGES/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./IMAGES/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./IMAGES/favicon-16x16.png">
+  <link rel="manifest" href="./IMAGES/site.webmanifest">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="./CSS/booking.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+  <script>
+    $(function(){
+    $("#header").load("pages.html"); 
+    $("#footer").load("footer.html"); 
+});
+</script>
+</head>
+<body>
+  <div id="header"></div>
+
+  <div id="top-container">
+    <h2 class="top-h2">Order Summary</h2>
+
+    <div id="second-container">
+      
+      <div id="checkout-package"></div>
+
+
+      <div id="checkout-details">
+        <h1>Payment</h1>
+
+        <div class="total-price">
+          <p>Total price:</p>
+          <p id="total-price">price</p>
+        </div>
+
+        <label for="paymentOption">Payment Option:</label>
+        <select id="paymentOption" onchange="toggleCardDetails()">
+          <option value="cash">Cash</option>
+          <option value="debitCard">Debit Card</option>
+        </select>
+      
+        <div id="cardDetails" class="card-details">
+          <label for="cardNumber">Card Holder Name:</label>
+          <input type="text" id="cardNumber">
+      
+          <label for="cvv">Card Number:</label>
+          <input type="number" id="cvv">
+      
+          <label for="username">CVV:</label>
+          <input type="number" id="username">
+        </div><br>
+      
+        <button class="bookNow-btn"  onclick="processPayment()">Book Now</button>
+        </div>
+      
+      
+    </div>
+  </div>
+
+  <div id="footer"></div>
+
+</body>
+<script src="./Scripts/booking.js"></script>
+</html>
+
+
+
+
+

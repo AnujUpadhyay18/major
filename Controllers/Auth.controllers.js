@@ -322,6 +322,7 @@ const registerEmployer = async (req, res) => {
         const token = generateToken(user._id, user.role);
   
         return res.status(200).json({
+          redirectedurl:"http://localhost:3000/major/",
           message: "User logged in successfully.",
           token,
           role: user.role

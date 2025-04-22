@@ -48,13 +48,20 @@ function fetchData(url) {
     .then(res => res.json())
     .then(data => {
       console.log("Fetched data:", data);
+
+      // Check if data is valid
+      if (!data) {
+        throw new Error("No data received");
+      }
+
       displayData(data);
     })
     .catch(err => {
-      console.error("Fetch error:", err);
+      console.error("Fetch error:", err.message);
+      main_section.innerHTML = `<p style="color:red;">Failed to load package details. Please try again later.</p>`;
     });
 }
-fetchData(Api+"/"+package_id);
+fetchData(`${Api}/${package_id}`);
 
 // Create the tour details card
 function createCard(item) {
@@ -95,11 +102,17 @@ function createCard(item) {
   });
 
   let ul = document.createElement("ul");
-  item.description.forEach((liText) => {
+  if (Array.isArray(item.description)) {
+    item.description.forEach((liText) => {
+      let li = document.createElement("li");
+      li.textContent = liText;
+      ul.appendChild(li);
+    });
+  } else {
     let li = document.createElement("li");
-    li.textContent = liText;
+    li.textContent = item.description;
     ul.appendChild(li);
-  });
+  }
 
   CardDetails.append(summary, ul);
   detailsDiv.appendChild(CardDetails);
@@ -115,10 +128,15 @@ function displayData(data) {
   let cardList = document.createElement("div");
   cardList.className = "details-card-list";
 
-  data.forEach(item => {
-    let detailCard = createCard(item);
+  if (Array.isArray(data)) {
+    data.forEach(item => {
+      let detailCard = createCard(item);
+      cardList.appendChild(detailCard);
+    });
+  } else {
+    let detailCard = createCard(data);
     cardList.appendChild(detailCard);
-  });
+  }
 
   main_section.append(cardList, staticDescrElement);
 }
@@ -133,12 +151,19 @@ function toggleArrow(icon) {
 let BookNowBtn = document.getElementById("booknow");
 
 BookNowBtn.addEventListener("click", () => {
-  let token = localStorage.getItem('token');
+  let user = JSON.parse(localStorage.getItem('user')) || null;
 
-  if (!token) {
+  if (!user) {
     alert("Please login first");
     window.location.href = "login.html";
   } else {
-    window.location.href = "booking.html";
+    window.location.href = "checkout_tour.html";
   }
+});
+
+// Additional book button logic
+let book = document.getElementById("booknow");
+book.addEventListener("click", () => {
+  console.log("hello");
+  window.location.href = 'booking.html';
 });

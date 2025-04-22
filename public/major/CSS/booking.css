@@ -1,0 +1,319 @@
+
+
+
+@import url('https://fonts.googlepis.com/css2?famaliy=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif; 
+}
+
+body {
+  padding: 0%;
+  margin: 0%;
+  background-color: #f1f0f0;
+}
+
+#top-container {
+  /* border: 1px solid royalblue; */
+  width: 90%;
+  margin: auto;
+}
+
+#second-container {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+}
+
+#checkout-package {
+  /* border: 1px solid green; */
+  width:63%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  border-radius: 10px;
+  height: 260px;
+  overflow: auto;
+  background-color: #eae6e6;
+}
+
+#checkout-details {
+  width:35%;
+  /* border: 1px solid black; */
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  border-radius: 10px;
+  padding: 15px;
+  overflow: hidden;
+}
+
+.checkout-package-card-list {
+  width: 100%;
+  overflow: hidden;
+}
+
+.checkout-package-card {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+
+.checkout-package-img-card {
+  width:28%;
+  align-items: center;
+  margin: auto;
+  padding-top: 15px;
+}
+
+.checkout-package-img {
+  width:100%;
+  height: 230px;
+  border-radius: 1em;
+  object-fit: cover;
+  /* height: 100%; */
+}
+
+.checkout-package-card-body {
+  width:68%;
+}
+
+.checkout-package-duration-price {
+  padding-right: 15px;
+  padding-left: 10px;
+}
+
+.checkout-package-duration {
+  color: rgb(121, 88, 152);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.checkout-package-price {
+  color: rgb(121, 88, 152);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: bold;
+}
+
+.checkout-package-title {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font: 1.2em sans-serif;
+}
+
+.checkout-package-name {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: medium;
+  color: rgb(16, 15, 15);
+}
+
+.inputmember {
+  display: flex;
+  align-items: center;
+}
+
+.member {
+  width: 60px;
+  height: 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
+  padding-left: 10px;
+  border-radius: 3px;
+}
+
+.incre{
+  margin-left: 5px;
+  height: 40px;
+}
+.decre{
+  margin-left: 5px;
+  height: 40px;
+}
+
+.inputmember button {
+  width:35px;
+  height: 30px;
+  background-color: rgb(91, 182, 91);
+}
+
+.inputmember button:hover {
+  color: #c9acac;
+  background-color: #359381;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px); 
+}
+
+#payment-form {
+  margin-top: 20px;
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.payment-option label {
+  margin-right: 10px;
+}
+
+.book-now-button {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.book-now-button:hover {
+  background-color: darkgreen;
+}
+
+
+
+#checkout-details h1 {
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+select,
+input[type="text"] {
+  width: 50%;
+  padding: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 5px;
+}
+
+.card-details {
+  display: none;
+}
+
+.bookNow-btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.bookNow-btn:hover {
+  background-color: #45a049;
+  background-color: darkgreen;
+}
+
+#checkout-details{
+    width:30%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin: auto;
+    align-items: center;
+    text-align: center;
+    padding: 10px 0px 50px 0px;
+    background-color: #f2eeee;
+   
+}
+
+.total-price{
+  display: flex;
+  margin: auto;
+  width: 60%;
+  justify-content: space-between;
+}
+.top-h2{
+  margin-left:20px ;
+}
+
+
+@media (max-width: 767.98px) {
+#second-container {
+flex-direction: column;
+}
+
+#checkout-package,
+#checkout-details {
+width: 100%;
+}
+
+#checkout-details {
+margin-top: 20px;
+}
+
+.total-price {
+width: 100%;
+flex-direction: column;
+}
+
+.top-h2 {
+margin-left: 0;
+margin-bottom: 10px;
+}
+
+#checkout-details {
+width: 100%;
+padding: 10px 0px 20px 0px;
+}
+}
+
+@media (max-width: 575.98px) {
+/* Adjust styles for extra small devices here */
+#checkout-details {
+width: 100%;
+padding: 10px;
+}
+
+.total-price {
+width: 100%;
+flex-direction: column;
+align-items: flex-start;
+margin-top: 10px;
+}
+
+.top-h2 {
+margin-left: 0;
+text-align: center;
+}
+}
+
+/* Small devices (tablets) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+/* Adjust styles for small devices here */
+#top-container {
+width: 90%;
+margin: auto;
+}
+
+#second-container {
+padding: 10px;
+}
+}
+
+/* Medium devices (laptops, desktops) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+/* Adjust styles for medium devices here */
+#top-container {
+width: 80%;
+margin: auto;
+}
+}
+
+
+#top-container>h2{
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-weight: lighter;
+}
+
+#checkout-details>h1{
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-weight: lighter;
+}
+

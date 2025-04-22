@@ -83,6 +83,8 @@
           localStorage.setItem("token", result.token);
           if (result.role === "seeker") {
             alert("Login Successfully");
+            //console.log(result.redirectedurl)
+            window.location.href="http://localhost:3000/"
             return;
           }
           alert("An OTP has been sent to your email");
